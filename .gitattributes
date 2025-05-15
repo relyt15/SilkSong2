@@ -1,2 +1,34 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Explicitly treat Godot text files as UTF-8 text
+*.gd   text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.cfg  text eol=lf
+*.import text eol=lf
+*.shader text eol=lf
+*.theme text eol=lf
+
+# Godot 4.x specific config files
+project.godot text eol=lf
+
+# Optional: enforce LF for markdown and scripts
+*.md    text eol=lf
+*.txt   text eol=lf
+*.sh    text eol=lf
+
+# Optional: treat common image/audio formats as binary (prevents diffing)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ogg binary
+*.wav binary
+*.mp3 binary
+*.webp binary
+*.exe binary
+*.dll binary
+*.so  binary
+*.zip binary
+*.otf binary
+*.ttf binary
