@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SilkSong2"
-run/main_scene="uid://h5o422n1lewl"
+run/main_scene="uid://cf14g8u3cuj70"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
