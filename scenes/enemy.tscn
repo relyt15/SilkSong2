@@ -1,6 +1,7 @@
-[gd_scene load_steps=56 format=3 uid="uid://byrhh5cx53ekh"]
+[gd_scene load_steps=57 format=3 uid="uid://byrhh5cx53ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/NightBorne.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -391,6 +392,7 @@ size = Vector2(200, 24)
 size = Vector2(25, 24)
 
 [node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
@@ -399,6 +401,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_7p1mj")
 
@@ -410,8 +413,8 @@ position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2(0.5, -12)
 shape = SubResource("RectangleShape2D_4ra3w")
