@@ -31,6 +31,10 @@ var direction: int = 1  # 1 for right, -1 for left
 
 # Godot callback func (called when a node and its children have entered the scene tree and are ready)
 func _ready():
+	# Connect signals
+	detection_area.body_entered.connect(_on_detection_area_body_entered)
+	detection_area.body_exited.connect(_on_detection_area_body_exited)
+	
 	# Start in idle state
 	change_state(State.IDLE)
 
@@ -102,3 +106,17 @@ func process_dead_state(_delta):
 
 func change_state(new_state: State):
 	current_state = new_state
+
+func _on_detection_area_body_entered(body):
+	# Detect if player entered the detection area
+	if body.is_in_group("player"):
+		player = body
+		if current_state == State.IDLE:
+			change_state(State.CHASE)
+
+func _on_detection_area_body_exited(body):
+	# Detect if player exited the detection area
+	if body.is_in_group("player"):
+		player = null
+		if current_state == State.CHASE:
+			change_state(State.IDLE)
