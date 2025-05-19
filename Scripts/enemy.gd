@@ -29,6 +29,29 @@ var direction: int = 1  # 1 for right, -1 for left
 @onready var detection_area = $DetectionArea
 @onready var hitbox = $Hitbox
 
+# Godot callback func (called when a node and its children have entered the scene tree and are ready)
+func _ready():
+	# Start in idle state
+	change_state(State.IDLE)
+
+# Godot callback func (called every physics frame)
+func _physics_process(delta):
+	# Handle state logic (match is a switch statement)
+	match current_state:
+		State.IDLE:
+			process_idle_state(delta)
+		State.CHASE:
+			process_chase_state(delta)
+		State.ATTACK:
+			process_attack_state(delta)
+		State.HURT:
+			process_hurt_state(delta)
+		State.DEAD:
+			process_dead_state(delta)
+	
+	# Apply movement
+	move_and_slide()
+
 func process_idle_state(_delta):
 	velocity = Vector2.ZERO
 	animated_sprite.play("idle")
