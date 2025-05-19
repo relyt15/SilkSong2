@@ -107,6 +107,18 @@ func process_dead_state(_delta):
 func change_state(new_state: State):
 	current_state = new_state
 
+func take_damage(amount: int):
+	if current_state == State.DEAD:
+		return
+	
+	health -= amount
+	if health <= 0:
+		change_state(State.DEAD)
+		animated_sprite.play("die")
+	else:
+		change_state(State.HURT)
+		# Knockback could be added here later
+
 func _on_detection_area_body_entered(body):
 	# Detect if player entered the detection area
 	if body.is_in_group("player"):
