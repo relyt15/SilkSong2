@@ -34,6 +34,7 @@ func _ready():
 	# Connect signals
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
+	hitbox.area_entered.connect(_on_hitbox_area_entered)
 	
 	# Start in idle state
 	change_state(State.IDLE)
@@ -132,3 +133,8 @@ func _on_detection_area_body_exited(body):
 		player = null
 		if current_state == State.CHASE:
 			change_state(State.IDLE)
+
+func _on_hitbox_area_entered(area):
+	# Check if the player's attack hit this enemy
+	if area.is_in_group("player_attack"):
+		take_damage(area.get_damage())  # Will need to add get_damage method to player attack area script
