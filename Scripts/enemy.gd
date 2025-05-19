@@ -35,6 +35,7 @@ func _ready():
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	# Start in idle state
 	change_state(State.IDLE)
@@ -138,3 +139,25 @@ func _on_hitbox_area_entered(area):
 	# Check if the player's attack hit this enemy
 	if area.is_in_group("player_attack"):
 		take_damage(area.get_damage())  # Will need to add get_damage method to player attack area script
+
+func _on_animation_finished():
+	# Handle what happens when animations finish
+	match current_state:
+		State.ATTACK:
+			# Attack finished, cooldown starts
+			can_attack = false
+			await get_tree().create_timer(attack_cooldown).timeout
+			can_attack = true
+			# Go back to chase if player still in range
+			if player != null:
+				change_state(State.CHASE)
+			else:
+				change_state(State.IDLE)
+		State.HURT:
+			# After hurt animation, go back to chase if player still in range
+			if player != null:
+				change_state(State.CHASE)
+			else:
+				change_state(State.IDLE)
+		State.DEAD:
+			queue_free()  # Remove enemy from scene
