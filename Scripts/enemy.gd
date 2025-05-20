@@ -90,7 +90,8 @@ func process_chase_state(_delta):
 
 func process_attack_state(_delta):
 	velocity = Vector2.ZERO
-	animated_sprite.play("attack")
+	if animated_sprite.animation != "attack":
+		animated_sprite.play("attack")
 
 func process_hurt_state(_delta):
 	velocity = Vector2.ZERO
@@ -101,6 +102,8 @@ func process_dead_state(_delta):
 	# Animation will play from take_damage function
 
 func change_state(new_state: State):
+	if current_state == new_state:
+		return
 	current_state = new_state
 
 func take_damage(amount: int):
