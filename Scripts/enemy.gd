@@ -6,7 +6,8 @@ enum State {
 	CHASE,
 	ATTACK,
 	HURT,
-	DEAD
+	DEAD,
+	COOLDOWN
 }
 
 # Enemy stats
@@ -22,6 +23,7 @@ var current_state: State = State.IDLE
 var player = null
 var can_attack: bool = true
 var direction: int = 1  # 1 for right, -1 for left
+var cooldown_timer: Timer
 
 # CollisionShape references
 @onready var animated_sprite = $AnimatedSprite2D
@@ -36,6 +38,12 @@ func _ready():
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
+	# Create a cooldown timer
+	cooldown_timer = Timer.new()
+	cooldown_timer.one_shot = true
+	cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
+	add_child(cooldown_timer)
+	
 	# Start in idle state
 	change_state(State.IDLE)
 
@@ -49,6 +57,8 @@ func _physics_process(delta):
 			process_chase_state(delta)
 		State.ATTACK:
 			process_attack_state(delta)
+		State.COOLDOWN:
+			process_cooldown_state(delta)
 		State.HURT:
 			process_hurt_state(delta)
 		State.DEAD:
@@ -85,13 +95,29 @@ func process_chase_state(_delta):
 		animated_sprite.flip_h = true
 	
 	# Check if in attack range
-	if global_position.distance_to(player.global_position) <= attack_range and can_attack:
+	var distance_to_player = global_position.distance_to(player.global_position)
+	if distance_to_player <= attack_range and can_attack:
 		change_state(State.ATTACK)
 
 func process_attack_state(_delta):
 	velocity = Vector2.ZERO
 	if animated_sprite.animation != "attack":
 		animated_sprite.play("attack")
+
+func process_cooldown_state(_delta):
+	# Stay in place during cooldown but face the player
+	velocity = Vector2.ZERO
+	animated_sprite.play("idle")  # Play idle animation during cooldown
+	
+	# Update facing direction if player exists
+	if player != null:
+		var direction_to_player = global_position.direction_to(player.global_position)
+		if direction_to_player.x > 0.01:
+			direction = 1
+			animated_sprite.flip_h = false
+		elif direction_to_player.x < -0.01:
+			direction = -1
+			animated_sprite.flip_h = true
 
 func process_hurt_state(_delta):
 	velocity = Vector2.ZERO
@@ -102,8 +128,10 @@ func process_dead_state(_delta):
 	# Animation will play from take_damage function
 
 func change_state(new_state: State):
+	# Prevent changing to the currently set state
 	if current_state == new_state:
 		return
+		
 	current_state = new_state
 
 func take_damage(amount: int):
@@ -137,19 +165,28 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("player_attack"):
 		take_damage(area.get_damage())  # Will need to add get_damage method to player attack area script
 
+func _on_attack_cooldown_timeout():
+	can_attack = true
+	
+	# Check player status and position to determine next state
+	if player != null and current_state != State.HURT and current_state != State.DEAD:
+		var distance_to_player = global_position.distance_to(player.global_position)
+		if distance_to_player <= attack_range:
+			change_state(State.ATTACK)
+		else:
+			change_state(State.CHASE)
+	elif current_state != State.HURT and current_state != State.DEAD:
+		change_state(State.IDLE)
+
 func _on_animation_finished():
 	# Handle what happens when animations finish
 	match current_state:
 		State.ATTACK:
-			# Attack finished, cooldown starts
+			# Attack finished, start cooldown timer and enter cooldown state
 			can_attack = false
-			await get_tree().create_timer(attack_cooldown).timeout
-			can_attack = true
-			# Go back to chase if player still in range
-			if player != null:
-				change_state(State.CHASE)
-			else:
-				change_state(State.IDLE)
+			cooldown_timer.wait_time = attack_cooldown
+			cooldown_timer.start()
+			change_state(State.COOLDOWN)
 		State.HURT:
 			# After hurt animation, go back to chase if player still in range
 			if player != null:
