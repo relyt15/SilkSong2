@@ -14,8 +14,7 @@ enum State {
 @export var speed: float = 100.0
 @export var health: int = 100
 @export var damage: int = 10
-@export var attack_range: float = 50.0
-@export var detection_range: float = 200.0
+@export var attack_range: float = 30.0
 @export var attack_cooldown: float = 1.0
 
 # Initial state variables
@@ -78,10 +77,10 @@ func process_chase_state(_delta):
 	velocity = direction_to_player * speed
 	
 	# Update facing direction
-	if direction_to_player.x > 0:
+	if direction_to_player.x > 0.01:
 		direction = 1
 		animated_sprite.flip_h = false
-	else:
+	elif direction_to_player.x < -0.01:
 		direction = -1
 		animated_sprite.flip_h = true
 	
@@ -92,15 +91,10 @@ func process_chase_state(_delta):
 func process_attack_state(_delta):
 	velocity = Vector2.ZERO
 	animated_sprite.play("attack")
-	
-	# Attack logic will be handled by animation finished signal
-	# We'll connect this after defining the function
 
 func process_hurt_state(_delta):
 	velocity = Vector2.ZERO
 	animated_sprite.play("take_damage")
-	
-	# State change will be handled by animation finished signal
 
 func process_dead_state(_delta):
 	velocity = Vector2.ZERO
