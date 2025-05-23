@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3oy77nald8p"
-path="res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"
+uid="uid://4yx1t67puqwv"
+path="res://.godot/imported/background2.png-4accd49dfe58266d9e0b2aab3a12cbf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/adventurer-Sheet.png"
-dest_files=["res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"]
+source_file="res://Assets/FantasyCaves/background2.png"
+dest_files=["res://.godot/imported/background2.png-4accd49dfe58266d9e0b2aab3a12cbf3.ctex"]
 
 [params]
 

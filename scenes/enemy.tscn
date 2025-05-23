@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=3 uid="uid://byrhh5cx53ekh"]
 
-[ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/NightBorne.png" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://Assets/sprites/NightBorne.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
