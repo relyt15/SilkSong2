@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crswl72elyb1c"
-path="res://.godot/imported/TempItem.png-eeec02815ec268ec40173c997481e25d.ctex"
+uid="uid://5alv7nwec4sm"
+path="res://.godot/imported/props_full.png-2078dbf9187d2db9e51ac70717c2877a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/TempItem.png"
-dest_files=["res://.godot/imported/TempItem.png-eeec02815ec268ec40173c997481e25d.ctex"]
+source_file="res://assets/environments/tiny_caverns/props_full.png"
+dest_files=["res://.godot/imported/props_full.png-2078dbf9187d2db9e51ac70717c2877a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bupfqfpimtb1h"
-path="res://.godot/imported/NightBorne.png-279d6b025986d9a395e552dd362b99cc.ctex"
+uid="uid://ycve7gfnerpn"
+path="res://.godot/imported/ss2Title.png-901e0f80efb7a8be08b5b4368f655253.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/NightBorne.png"
-dest_files=["res://.godot/imported/NightBorne.png-279d6b025986d9a395e552dd362b99cc.ctex"]
+source_file="res://title_screen_pack/title_art/ss2Title.png"
+dest_files=["res://.godot/imported/ss2Title.png-901e0f80efb7a8be08b5b4368f655253.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

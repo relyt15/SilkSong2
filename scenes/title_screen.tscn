@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf14g8u3cuj70"]
 
-[ext_resource type="Script" uid="uid://dcmgb517gppky" path="res://TitleScreenPack/title_screen.gd" id="1_sa3yf"]
-[ext_resource type="Texture2D" uid="uid://ycve7gfnerpn" path="res://TitleScreenPack/TitleArt/ss2Title.png" id="2_s4lrb"]
+[ext_resource type="Script" uid="uid://dcmgb517gppky" path="res://title_screen_pack/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://ycve7gfnerpn" path="res://title_screen_pack/title_art/ss2Title.png" id="2_s4lrb"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhv82pekap71j"
-path="res://.godot/imported/mainlev_build.png-f0568a6cebb01cb8e11f96023fe65696.ctex"
+uid="uid://bx3j8kwm1tb3p"
+path="res://.godot/imported/moss_full.png-8e398761902fd626d60a6f425ba0492b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environments/FantasyCaves/mainlev_build.png"
-dest_files=["res://.godot/imported/mainlev_build.png-f0568a6cebb01cb8e11f96023fe65696.ctex"]
+source_file="res://assets/environments/tiny_caverns/moss_full.png"
+dest_files=["res://.godot/imported/moss_full.png-8e398761902fd626d60a6f425ba0492b.ctex"]
 
 [params]
 

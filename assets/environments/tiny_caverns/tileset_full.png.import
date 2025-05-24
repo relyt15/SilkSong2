@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx3j8kwm1tb3p"
-path="res://.godot/imported/moss_full.png-840c4991e80ccc130d7ef19f82bd3803.ctex"
+uid="uid://jvv8a54ehs3b"
+path="res://.godot/imported/tileset_full.png-642e5d0430bcdfe6ed4990e1445b25c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environments/TinyCaverns/moss_full.png"
-dest_files=["res://.godot/imported/moss_full.png-840c4991e80ccc130d7ef19f82bd3803.ctex"]
+source_file="res://assets/environments/tiny_caverns/tileset_full.png"
+dest_files=["res://.godot/imported/tileset_full.png-642e5d0430bcdfe6ed4990e1445b25c0.ctex"]
 
 [params]
 

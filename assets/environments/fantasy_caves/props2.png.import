@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxpyetbbpkc5g"
-path="res://.godot/imported/props2.png-f0ffd1e8d1bee87edf6163bca823d9ec.ctex"
+path="res://.godot/imported/props2.png-bc08e96da8ec69cf1930ca73f0e552a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environments/FantasyCaves/props2.png"
-dest_files=["res://.godot/imported/props2.png-f0ffd1e8d1bee87edf6163bca823d9ec.ctex"]
+source_file="res://assets/environments/fantasy_caves/props2.png"
+dest_files=["res://.godot/imported/props2.png-bc08e96da8ec69cf1930ca73f0e552a2.ctex"]
 
 [params]
 

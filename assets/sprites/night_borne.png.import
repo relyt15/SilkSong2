@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvv8a54ehs3b"
-path="res://.godot/imported/tileset_full.png-0b1542284f322b08a048aef8fe83a74f.ctex"
+uid="uid://bupfqfpimtb1h"
+path="res://.godot/imported/night_borne.png-d43239f087303d7420453c3768b5bb55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environments/TinyCaverns/tileset_full.png"
-dest_files=["res://.godot/imported/tileset_full.png-0b1542284f322b08a048aef8fe83a74f.ctex"]
+source_file="res://assets/sprites/night_borne.png"
+dest_files=["res://.godot/imported/night_borne.png-d43239f087303d7420453c3768b5bb55.ctex"]
 
 [params]
 
