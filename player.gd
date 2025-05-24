@@ -26,11 +26,14 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1:
 		$AnimatedSprite2D.flip_h = true
 
-	# Animation state logic
+# Animation state logic
 	if not is_on_floor():
-		$AnimatedSprite2D.play("jump")
+		if velocity.y < 0:
+			$AnimatedSprite2D.play("jump")  # Going up
+		else:
+			$AnimatedSprite2D.play("fall")  # Falling down
 	elif direction:
-		$AnimatedSprite2D.play("running")
+		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
 
