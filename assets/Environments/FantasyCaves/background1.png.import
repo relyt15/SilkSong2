@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxpyetbbpkc5g"
-path="res://.godot/imported/props2.png-c89f948d3d8c9da366944c0504a8fa15.ctex"
+uid="uid://bvhcjsy2rrwu2"
+path="res://.godot/imported/background1.png-585ebbb65eb6cf3c6140df695e888e68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/FantasyCaves/props2.png"
-dest_files=["res://.godot/imported/props2.png-c89f948d3d8c9da366944c0504a8fa15.ctex"]
+source_file="res://Assets/Environments/FantasyCaves/background1.png"
+dest_files=["res://.godot/imported/background1.png-585ebbb65eb6cf3c6140df695e888e68.ctex"]
 
 [params]
 

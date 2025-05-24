@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1otpu6v8fvy"
-path="res://.godot/imported/background3.png-1d0cefc2e8376d7e672e034dd58390a8.ctex"
+uid="uid://b8rxj4cpvh6w5"
+path="res://.godot/imported/bricks_full.png-f1a1f94c1fedd3e0ca67c162c0f7baf8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/FantasyCaves/background3.png"
-dest_files=["res://.godot/imported/background3.png-1d0cefc2e8376d7e672e034dd58390a8.ctex"]
+source_file="res://Assets/Environments/TinyCaverns/bricks_full.png"
+dest_files=["res://.godot/imported/bricks_full.png-f1a1f94c1fedd3e0ca67c162c0f7baf8.ctex"]
 
 [params]
 

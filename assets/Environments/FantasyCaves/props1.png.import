@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvv8a54ehs3b"
-path="res://.godot/imported/tileset_full.png-736fca86e351ebfd0a6e04ab06e1e6ab.ctex"
+uid="uid://bdnprtnwhah8"
+path="res://.godot/imported/props1.png-ce154d2c80d7096b88fcff5fb1b084c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TinyCaverns/tileset_full.png"
-dest_files=["res://.godot/imported/tileset_full.png-736fca86e351ebfd0a6e04ab06e1e6ab.ctex"]
+source_file="res://Assets/Environments/FantasyCaves/props1.png"
+dest_files=["res://.godot/imported/props1.png-ce154d2c80d7096b88fcff5fb1b084c2.ctex"]
 
 [params]
 

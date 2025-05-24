@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e2t6d7x1j6xd"
-path="res://.godot/imported/background4a.png-d6a08d462f41dd3d58f727cd24bcbb53.ctex"
+uid="uid://bx3j8kwm1tb3p"
+path="res://.godot/imported/moss_full.png-840c4991e80ccc130d7ef19f82bd3803.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/FantasyCaves/background4a.png"
-dest_files=["res://.godot/imported/background4a.png-d6a08d462f41dd3d58f727cd24bcbb53.ctex"]
+source_file="res://Assets/Environments/TinyCaverns/moss_full.png"
+dest_files=["res://.godot/imported/moss_full.png-840c4991e80ccc130d7ef19f82bd3803.ctex"]
 
 [params]
 
