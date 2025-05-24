@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3oy77nald8p"
-path="res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"
+uid="uid://5alv7nwec4sm"
+path="res://.godot/imported/props_full.png-7c983eede801fad89413ced41224781e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/adventurer-Sheet.png"
-dest_files=["res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"]
+source_file="res://Assets/Environments/TinyCaverns/props_full.png"
+dest_files=["res://.godot/imported/props_full.png-7c983eede801fad89413ced41224781e.ctex"]
 
 [params]
 
