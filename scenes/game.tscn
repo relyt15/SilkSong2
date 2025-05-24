@@ -3,12 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/Item.tscn" id="2_yqjtg"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(0, 1)
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-1, -2)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, 2)
 zoom = Vector2(5, 5)
 
 [node name="Area2D" parent="." instance=ExtResource("2_yqjtg")]
@@ -16,3 +19,9 @@ position = Vector2(86, -9)
 
 [node name="Area2D2" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(-93, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource("WorldBoundaryShape2D_uwrxv")

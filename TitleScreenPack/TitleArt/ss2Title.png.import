@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3oy77nald8p"
-path="res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"
+uid="uid://ycve7gfnerpn"
+path="res://.godot/imported/ss2Title.png-25589bb15cd52d2621f786b8d1145bc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/adventurer-Sheet.png"
-dest_files=["res://.godot/imported/adventurer-Sheet.png-9f522fa4574d1a413afe7df6674d1479.ctex"]
+source_file="res://TitleScreenPack/TitleArt/ss2Title.png"
+dest_files=["res://.godot/imported/ss2Title.png-25589bb15cd52d2621f786b8d1145bc2.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://lnn5joxsy13a"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 202.0
+offset_top = 112.0
+offset_right = 631.0
+offset_bottom = 304.0
+text = "(Next Scene Here)"
