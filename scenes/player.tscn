@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://c6fgunciudr6r"]
 
 [ext_resource type="Texture2D" uid="uid://p3oy77nald8p" path="res://assets/sprites/adventurer-Sheet.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://Scripts/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
 atlas = ExtResource("1_3vyb7")
@@ -155,10 +155,8 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 5.0
 
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
-
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -18)
