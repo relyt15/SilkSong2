@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5o422n1lewl"]
+[gd_scene load_steps=3 format=3 uid="uid://h5o422n1lewl"]
 
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/Item.tscn" id="2_yqjtg"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,3 +10,9 @@ position = Vector2(0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+
+[node name="Area2D" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(86, -9)
+
+[node name="Area2D2" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-93, -10)
