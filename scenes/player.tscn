@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c6fgunciudr6r"]
+[gd_scene load_steps=30 format=3 uid="uid://c6fgunciudr6r"]
 
 [ext_resource type="Texture2D" uid="uid://p3oy77nald8p" path="res://assets/sprites/adventurer_sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://Scripts/player.gd" id="1_g2els"]
@@ -62,22 +62,6 @@ region = Rect2(100, 74, 50, 37)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(150, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(200, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(250, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(300, 74, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(0, 111, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("1_3vyb7")
@@ -175,26 +159,14 @@ animations = [{
 "texture": SubResource("AtlasTexture_f1ej7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a8ls1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfm1y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fulsm")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_4r5pv")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a38lo")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,8 +208,10 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -17.9375)
 scale = Vector2(1, 1.02365)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
