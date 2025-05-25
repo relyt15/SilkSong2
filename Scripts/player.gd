@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity: int = -350
 @export var health: int = 100
 @export var max_health: int = 100
-@export var attack_damage: int = 25
+@export var damage: int = 25
 
 # Attack system
 var is_attacking: bool = false
@@ -50,3 +50,36 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("idle")
 
 	move_and_slide()
+
+func attack():
+	if not can_attack:
+		return
+	
+	is_attacking = true
+	can_attack = false
+	animated_sprite.play("attack")
+	
+	# Enable attack hitbox ONLY during attack
+	if attack_area:
+		attack_area.monitoring = true
+		
+func take_damage(amount: int):
+	health -= amount
+	print("Player took ", amount, " damage. Health: ", health)
+	
+	if health <= 0:
+		die()
+	else:
+		# Play hurt animation
+		# animated_sprite.play("hurt")
+		pass
+
+func die():
+	print("Player died!")
+	# Add death logic here
+	# animated_sprite.play("die")
+	# Could reload scene, show game over screen, etc.
+
+# Get damage amount for enemy to reference
+func get_damage() -> int:
+	return damage

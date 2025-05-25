@@ -146,6 +146,10 @@ func take_damage(amount: int):
 		change_state(State.HURT)
 		# Knockback could be added here later
 
+# Function for player to get enemy damage amount
+func get_damage() -> int:
+	return damage
+
 func _on_detection_area_body_entered(body):
 	# Detect if player entered the detection area
 	if body.is_in_group("player"):
