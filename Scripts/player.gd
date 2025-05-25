@@ -16,6 +16,21 @@ var can_attack: bool = true
 @onready var attack_area = $AttackArea
 @onready var hurtbox = $Hurtbox
 
+func _ready():
+	# Add player to group for enemy detection
+	add_to_group("player")
+	
+	# Connect signals
+	if attack_area:
+		attack_area.add_to_group("player_attack")
+		# Disable attack area initially - only active during attacks
+		attack_area.monitoring = false
+	
+	if hurtbox:
+		hurtbox.area_entered.connect(_on_hurtbox_area_entered)
+	
+	animated_sprite.animation_finished.connect(_on_animation_finished)
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -62,7 +77,7 @@ func attack():
 	# Enable attack hitbox ONLY during attack
 	if attack_area:
 		attack_area.monitoring = true
-		
+
 func take_damage(amount: int):
 	health -= amount
 	print("Player took ", amount, " damage. Health: ", health)
@@ -83,3 +98,19 @@ func die():
 # Get damage amount for enemy to reference
 func get_damage() -> int:
 	return damage
+
+func _on_animation_finished():
+	# Handle attack animation finishing
+	if animated_sprite.animation == "attack":
+		is_attacking = false
+		can_attack = true
+		# Disable attack area when attack ends
+		if attack_area:
+			attack_area.monitoring = false
+
+func _on_hurtbox_area_entered(area):
+	# Only take damage when enemy attack area is actively monitoring
+	if area.is_in_group("enemy_attack") and area.monitoring:
+		var enemy = area.get_parent()
+		if enemy.has_method("get_damage"):
+			take_damage(enemy.get_damage())
