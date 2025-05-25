@@ -28,15 +28,21 @@ var cooldown_timer: Timer
 # CollisionShape references
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var detection_area = $DetectionArea
-@onready var hitbox = $Hitbox
+@onready var hurtbox = $HurtBox
+@onready var attack_area = $AttackArea
 
 # Godot callback func (called when a node and its children have entered the scene tree and are ready)
 func _ready():
 	# Connect signals
 	detection_area.body_entered.connect(_on_detection_area_body_entered)
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
-	hitbox.area_entered.connect(_on_hitbox_area_entered)
+	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	
+	# Setup attack area instead of hitbox
+	attack_area.add_to_group("enemy_attack")
+	# Disable attack area initially - only active during attacks
+	attack_area.monitoring = false
 	
 	# Create a cooldown timer
 	cooldown_timer = Timer.new()
@@ -103,6 +109,8 @@ func process_attack_state(_delta):
 	velocity = Vector2.ZERO
 	if animated_sprite.animation != "attack":
 		animated_sprite.play("attack")
+		# Enable attack area ONLY when attack animation starts
+		attack_area.monitoring = true
 
 func process_cooldown_state(_delta):
 	# Stay in place during cooldown but face the player
@@ -139,6 +147,8 @@ func take_damage(amount: int):
 		return
 	
 	health -= amount
+	print("Enemy took ", amount, " damage. Health: ", health)  # Debug print
+	
 	if health <= 0:
 		change_state(State.DEAD)
 		animated_sprite.play("die")
@@ -164,10 +174,12 @@ func _on_detection_area_body_exited(body):
 		if current_state == State.CHASE:
 			change_state(State.IDLE)
 
-func _on_hitbox_area_entered(area):
-	# Check if the player's attack hit this enemy
-	if area.is_in_group("player_attack"):
-		take_damage(area.get_damage())  # Will need to add get_damage method to player attack area script
+func _on_hurtbox_area_entered(area):
+# Only take damage when player attack area is actively monitoring
+	if area.is_in_group("player_attack") and area.monitoring:
+		var player_node = area.get_parent()
+		if player_node.has_method("get_damage"):
+			take_damage(player_node.get_damage())
 
 func _on_attack_cooldown_timeout():
 	can_attack = true
@@ -183,10 +195,11 @@ func _on_attack_cooldown_timeout():
 		change_state(State.IDLE)
 
 func _on_animation_finished():
-	# Handle what happens when animations finish
+# Handle what happens when animations finish
 	match current_state:
 		State.ATTACK:
-			# Attack finished, start cooldown timer and enter cooldown state
+			# Disable attack area when attack animation finishes
+			attack_area.monitoring = false
 			can_attack = false
 			cooldown_timer.wait_time = attack_cooldown
 			cooldown_timer.start()

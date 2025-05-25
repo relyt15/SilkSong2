@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/night_borne.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(0, 160, 80, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
 atlas = ExtResource("1_7p1mj")
 region = Rect2(80, 160, 80, 80)
@@ -38,10 +42,6 @@ region = Rect2(640, 160, 80, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
 atlas = ExtResource("1_7p1mj")
 region = Rect2(720, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
-atlas = ExtResource("1_7p1mj")
-region = Rect2(0, 160, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
 atlas = ExtResource("1_7p1mj")
@@ -207,6 +207,9 @@ region = Rect2(320, 240, 80, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_md0e3")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4ra3w")
 }, {
 "duration": 1.0,
@@ -232,9 +235,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w8i8w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md0e3")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_otmr2")
@@ -382,8 +382,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p1mj"]
-radius = 11.0
-height = 26.0
+radius = 13.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(300, 24)
@@ -400,30 +399,26 @@ script = ExtResource("1_md0e3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_7w3jn")
-animation = &"take_damage"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -13)
+position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_7p1mj")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0.5, -14.5)
 shape = SubResource("RectangleShape2D_4ra3w")
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(26, -17.5)
