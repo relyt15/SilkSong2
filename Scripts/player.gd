@@ -79,7 +79,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 func attack():
 	if not can_attack:
 		return
