@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=13 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="6_aao8k"]
 [ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/Item.tscn" id="6_mf65l"]
 [ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="7_5ijor"]
+[ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ambaj"]
 texture = ExtResource("2_68kfw")
@@ -5179,3 +5180,12 @@ position = Vector2(16, -128)
 
 [node name="Platform6" parent="." instance=ExtResource("7_5ijor")]
 position = Vector2(42, -128)
+
+[node name="Area2D" parent="." instance=ExtResource("8_1v1w4")]
+position = Vector2(126, 15)
+
+[node name="Area2D2" parent="." instance=ExtResource("8_1v1w4")]
+position = Vector2(232, 2)
+
+[node name="Area2D3" parent="." instance=ExtResource("8_1v1w4")]
+position = Vector2(136, -13)

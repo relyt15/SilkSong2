@@ -67,12 +67,11 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 		jump_count += 1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions
-	var direction := Input.get_axis("ui_left", "ui_right")
 	# Horizontal movement
 	
 	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
