@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqi11u8nmawqe"]
+
+[ext_resource type="Script" uid="uid://dv4jwauwwxchj" path="res://Scripts/double_jump_item.gd" id="1_aax5e"]
+[ext_resource type="Texture2D" uid="uid://so4b4jkievc4" path="res://assets/sprites/double_jump.png" id="2_aax5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0dh"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_aax5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ph0dh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_aax5e")
