@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_jlxkg"]
 [ext_resource type="Texture2D" uid="uid://b73okndns7vc7" path="res://assets/environments/fantasy_caves/background4b.png" id="5_jlxkg"]
-[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="6_aao8k"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://Scenes/Item.tscn" id="6_mf65l"]
-[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://Scenes/platform.tscn" id="7_5ijor"]
+[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="6_aao8k"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/Item.tscn" id="6_mf65l"]
+[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="7_5ijor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ambaj"]
 texture = ExtResource("2_68kfw")
