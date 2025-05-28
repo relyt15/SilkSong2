@@ -11,7 +11,7 @@ func _ready():
 
 func _on_play_pressed():
 	# Replace the scene link with next game scene
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/starting_room.tscn")
 
 func _on_exit_pressed():
 	get_tree().quit()
