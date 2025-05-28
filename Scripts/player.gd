@@ -11,73 +11,95 @@ extends CharacterBody2D
 var is_attacking: bool = false
 var can_attack: bool = true
 
+# Direction tracking
+var facing_direction: int = 1  # 1 for right, -1 for left
+
 # Node references
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_area = $AttackArea
-@onready var hurtbox = $Hurtbox
+@onready var hurtbox = $HurtBox
 
 func _ready():
-	# Add player to group for enemy detection
+	# Player collision layers
+	if attack_area:
+		attack_area.collision_layer = 1  # Player attack on layer 1
+		attack_area.collision_mask = 4   # Detect enemy hurtboxes on layer 4
+		attack_area.monitoring = true
+		attack_area.monitorable = true
+		print("Player Attack area collision_layer: ", attack_area.collision_layer, " collision_mask: ", attack_area.collision_mask)
+
+	if hurtbox:
+		hurtbox.collision_layer = 2      # Player hurtbox on layer 2
+		hurtbox.collision_mask = 3       # Detect enemy attacks on layer 3
+		hurtbox.monitoring = true
+		hurtbox.monitorable = true
+		print("Player Hurtbox collision_layer: ", hurtbox.collision_layer, " collision_mask: ", hurtbox.collision_mask)
+	
 	add_to_group("player")
 	
-	# Connect signals
 	if attack_area:
 		attack_area.add_to_group("player_attack")
-		# Disable attack area initially - only active during attacks
 		attack_area.monitoring = false
+		# Connect the area_entered signal for immediate detection
+		attack_area.area_entered.connect(_on_attack_area_entered)
 	
 	if hurtbox:
+		hurtbox.add_to_group("player_hurtbox")
 		hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	# Handle attack input
 	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
 		attack()
-		return  # Don't process movement during attack
+		return
 	
-	# Skip movement if attacking
 	if is_attacking:
-		velocity.x = 0  # Stop horizontal movement during attack
+		velocity.x = 0
 		move_and_slide()
 		return
 	
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 	
-	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	
-	# Horizontal movement
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = 0
 
-	# Flip sprite
+	# Update facing direction and flip sprite + attack area
 	if direction == 1:
-		animated_sprite.flip_h = false
+		set_facing_direction(1)
 	elif direction == -1:
-		animated_sprite.flip_h = true
+		set_facing_direction(-1)
 
-	# Animation state logic
 	if not is_on_floor():
 		if velocity.y < 0:
-			animated_sprite.play("jump")  # Going up
+			animated_sprite.play("jump")
 		else:
-			animated_sprite.play("fall")  # Falling down
+			animated_sprite.play("fall")
 	elif direction:
 		animated_sprite.play("run")
 	else:
 		animated_sprite.play("idle")
 
 	move_and_slide()
+
+func set_facing_direction(new_direction: int):
+	if facing_direction != new_direction:
+		facing_direction = new_direction
+		
+		# Flip sprite
+		animated_sprite.flip_h = (facing_direction == -1)
+		
+		# Flip attack area
+		if attack_area:
+			attack_area.scale.x = facing_direction
 
 func attack():
 	if not can_attack:
@@ -87,42 +109,57 @@ func attack():
 	can_attack = false
 	animated_sprite.play("attack")
 	
-	# Enable attack hitbox ONLY during attack
 	if attack_area:
 		attack_area.monitoring = true
+		# Wait one frame before checking overlaps
+		await get_tree().process_frame
+		_check_attack_overlaps()
+
+# Check for overlapping areas when attack starts
+func _check_attack_overlaps():
+	if not attack_area or not attack_area.monitoring:
+		return
+	
+	var overlapping_areas = attack_area.get_overlapping_areas()
+	
+	for area in overlapping_areas:
+		if area.is_in_group("enemy_hurtbox"):
+			var enemy_node = area.get_parent()
+			if enemy_node.has_method("take_damage"):
+				enemy_node.take_damage(damage)
+
+# This will catch enemies that enter the attack area while it's active
+func _on_attack_area_entered(area):
+	if area.is_in_group("enemy_hurtbox") and attack_area.monitoring:
+		var enemy_node = area.get_parent()
+		if enemy_node.has_method("take_damage"):
+			enemy_node.take_damage(damage)
 
 func take_damage(amount: int):
 	health -= amount
-	print("Player took ", amount, " damage. Health: ", health)
-	
+	print(health)
 	if health <= 0:
 		die()
-	else:
-		# Play hurt animation
-		# animated_sprite.play("hurt")
-		pass
 
 func die():
 	print("Player died!")
-	# Add death logic here
-	# animated_sprite.play("die")
-	# Could reload scene, show game over screen, etc.
 
-# Get damage amount for enemy to reference
 func get_damage() -> int:
 	return damage
 
 func _on_animation_finished():
-	# Handle attack animation finishing
 	if animated_sprite.animation == "attack":
 		is_attacking = false
 		can_attack = true
-		# Disable attack area when attack ends
 		if attack_area:
 			attack_area.monitoring = false
 
 func _on_hurtbox_area_entered(area):
-	# Only take damage when enemy attack area is actively monitoring
+	# Don't detect our own attack area
+	if area == attack_area:
+		print("Player ignoring own attack area")
+		return
+		
 	if area.is_in_group("enemy_attack") and area.monitoring:
 		var enemy = area.get_parent()
 		if enemy.has_method("get_damage"):

@@ -193,10 +193,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
-radius = 9.0
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt7fs"]
-size = Vector2(16, 37.5)
+size = Vector2(16, 37.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(19, 30)
@@ -218,7 +218,7 @@ shape = SubResource("CapsuleShape2D_fjrip")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(17, -18.75)
+position = Vector2(17, -18.875)
 shape = SubResource("RectangleShape2D_dt7fs")
 
 [node name="HurtBox" type="Area2D" parent="."]

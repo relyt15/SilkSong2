@@ -421,5 +421,5 @@ shape = SubResource("RectangleShape2D_4ra3w")
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(26, -17.5)
+position = Vector2(27, -17.5)
 shape = SubResource("RectangleShape2D_5uy6h")
