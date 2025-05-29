@@ -24,6 +24,8 @@ var facing_direction: int = 1  # 1 for right, -1 for left
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_area = $AttackArea
 @onready var hurtbox = $HurtBox
+@onready var timer: Timer = $Timer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _ready():
 	# Player collision layers
@@ -162,9 +164,7 @@ func take_damage(amount: int):
 	if health <= 0:
 		die()
 
-func die():
-	print("Player died!")
-
+	
 func get_damage() -> int:
 	return damage
 
@@ -185,3 +185,13 @@ func _on_hurtbox_area_entered(area):
 		var enemy = area.get_parent()
 		if enemy.has_method("get_damage"):
 			take_damage(enemy.get_damage())
+
+func die():
+	print("Player died!")
+	Engine.time_scale = 0.5
+	collision_shape.queue_free()
+	timer.start()
+	
+func _on_timer_timeout() -> void:
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
