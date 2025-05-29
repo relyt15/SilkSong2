@@ -188,9 +188,9 @@ func _on_hurtbox_area_entered(area):
 
 func die():
 	print("Player died!")
-	Engine.time_scale = 0.5
-	collision_shape.queue_free()
-	timer.start()
+	#Engine.time_scale = 0.5
+	#collision_shape.queue_free()
+	#timer.start()
 	
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1.0
