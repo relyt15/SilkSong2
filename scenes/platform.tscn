@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5262"]
 size = Vector2(26, 11)
 
-[node name="PlatformA" type="AnimatableBody2D"]
+[node name="platform" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.775954, 0.684489)

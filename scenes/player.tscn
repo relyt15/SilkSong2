@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://c6fgunciudr6r"]
 
 [ext_resource type="Texture2D" uid="uid://p3oy77nald8p" path="res://assets/sprites/adventurer_sheet.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://Scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://scripts/player.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -201,8 +201,15 @@ size = Vector2(16, 37.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(19, 30)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -27)
+zoom = Vector2(4, 4)
+limit_left = -688
+limit_right = 816
+limit_bottom = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17.9375)

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var max_health: int = 100
 @export var damage: int = 25
 
-#Variables for double_jump
+# Variables for double_jump
 var collected_item_count: int = 0
 var can_double_jump: bool = false
 var jump_count: int = 0
@@ -60,47 +60,41 @@ func _ready():
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-#resets jumps when grounded
+	
+	# Resets jumps when grounded
 	if is_on_floor():
 		jump_count = 0
-#allows for double jumping when items are collected
+	
+	# Allows for double jumping when items are collected
 	max_jumps = 2 if can_double_jump else 1
-
+	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and jump_count < max_jumps:
+	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = jump_velocity
 		jump_count += 1
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions
-	# Horizontal movement
 	
 	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
 		attack()
 		return
+	
+	var direction := Input.get_axis("move_left", "move_right")
 	
 	if is_attacking:
 		velocity.x = 0
 		move_and_slide()
 		return
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-	
-	var direction := Input.get_axis("move_left", "move_right")
-	
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = 0
-
+	
 	# Update facing direction and flip sprite + attack area
 	if direction == 1:
 		set_facing_direction(1)
 	elif direction == -1:
 		set_facing_direction(-1)
-
+	
 	if not is_on_floor():
 		if velocity.y < 0:
 			animated_sprite.play("jump")
@@ -110,7 +104,7 @@ func _physics_process(delta):
 		animated_sprite.play("run")
 	else:
 		animated_sprite.play("idle")
-
+	
 	move_and_slide()
 
 func set_facing_direction(new_direction: int):
@@ -164,7 +158,6 @@ func take_damage(amount: int):
 	if health <= 0:
 		die()
 
-	
 func get_damage() -> int:
 	return damage
 
@@ -191,7 +184,7 @@ func die():
 	#Engine.time_scale = 0.5
 	#collision_shape.queue_free()
 	#timer.start()
-	
+
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
