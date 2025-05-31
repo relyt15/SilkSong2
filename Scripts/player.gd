@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var damage: int = 25
 
 # Variables for double_jump
+var collected_double_jump_count: int = 0
 var collected_item_count: int = 0
 var can_double_jump: bool = false
 var jump_count: int = 0
@@ -188,3 +189,9 @@ func die():
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
+
+#Function for collecting and updating coin count
+func update_coin_label():
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_coin_count(collected_item_count)

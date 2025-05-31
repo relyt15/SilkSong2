@@ -7,7 +7,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "player":
-		body.collected_item_count += 1
-		if body.collected_item_count >= 3 and !body.can_double_jump:
+		body.collected_double_jump_count += 1
+		if body.collected_double_jump_count >= 3 and !body.can_double_jump:
 			body.can_double_jump = true
 		queue_free()
