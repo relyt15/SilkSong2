@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_jlxkg"]
 [ext_resource type="Texture2D" uid="uid://b73okndns7vc7" path="res://assets/environments/fantasy_caves/background4b.png" id="5_jlxkg"]
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="6_aao8k"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/item.tscn" id="6_mf65l"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/Item.tscn" id="6_mf65l"]
 [ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="7_5ijor"]
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="9_r8jva"]
