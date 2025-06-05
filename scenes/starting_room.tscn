@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=16 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://Scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://Scenes/enemy.tscn" id="9_r8jva"]
 [ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="10_uldaa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uldaa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uldaa"]
 texture = ExtResource("2_68kfw")
@@ -5210,6 +5212,9 @@ position = Vector2(280, -256)
 
 [node name="kill_zone" parent="." instance=ExtResource("10_uldaa")]
 position = Vector2(0, 162)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
+shape = SubResource("WorldBoundaryShape2D_uldaa")
 
 [node name="mid_layer" type="TileMapLayer" parent="."]
 z_index = -1
