@@ -10,12 +10,14 @@ enum State {
 	DEAD
 }
 
+signal healthChange
+
 @export var speed: int = 130
 @export var jump_velocity: int = -350
 @export var max_health: int = 100
 @export var damage: int = 25
 
-var health: int
+@export var health: int
 var current_state: State = State.IDLE
 var facing_direction: int = 1
 var can_attack: bool = true
@@ -167,6 +169,7 @@ func take_damage(amount: int):
 		return
 
 	health -= amount
+	healthChange.emit()
 	if health <= 0:
 		change_state(State.DEAD)
 	else:
@@ -177,6 +180,7 @@ func get_damage() -> int:
 
 func reset_player():
 	health = max_health
+	healthChange.emit()
 	can_attack = true
 	can_double_jump = false
 	jump_count = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=18 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="9_r8jva"]
 [ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="10_uldaa"]
+[ext_resource type="Script" uid="uid://b47ife35llv18" path="res://scripts/health_bar.gd" id="11_mma0u"]
+[ext_resource type="Texture2D" uid="uid://cb4s4ggsu2rq5" path="res://assets/sprites/healthbarUnder.png" id="12_oml0k"]
+[ext_resource type="Texture2D" uid="uid://c1mjogyw2v0da" path="res://assets/sprites/healthbarProgress.png" id="13_mslf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ambaj"]
 texture = ExtResource("2_68kfw")
@@ -5216,3 +5219,20 @@ offset_top = -736.0
 offset_right = 824.0
 offset_bottom = 157.0
 texture = ExtResource("5_jlxkg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -274.0
+offset_top = 46.0
+offset_right = -184.0
+offset_bottom = 106.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+texture_under = ExtResource("12_oml0k")
+texture_progress = ExtResource("13_mslf8")
+script = ExtResource("11_mma0u")
+player = NodePath("../../player")
