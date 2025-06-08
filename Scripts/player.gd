@@ -1,184 +1,233 @@
 extends CharacterBody2D
 
-# Player stats
+enum State {
+	IDLE,
+	RUN,
+	JUMP,
+	FALL,
+	ATTACK,
+	HURT,
+	DEAD
+}
+
+signal healthChange
+
 @export var speed: int = 130
 @export var jump_velocity: int = -350
-@export var health: int = 100
 @export var max_health: int = 100
 @export var damage: int = 25
 
+@export var health: int
+var current_state: State = State.IDLE
+var facing_direction: int = 1
+var can_attack: bool = true
 # Variables for double_jump
 var collected_double_jump_count: int = 0
 var collected_item_count: int = 0
 var can_double_jump: bool = false
 var jump_count: int = 0
 var max_jumps: int = 1
+var spawn_position: Vector2
 
-# Attack system
-var is_attacking: bool = false
-var can_attack: bool = true
-
-# Direction tracking
-var facing_direction: int = 1  # 1 for right, -1 for left
-
-# Node references
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var attack_area = $AttackArea
-@onready var hurtbox = $HurtBox
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var attack_area: Area2D = $AttackArea
+@onready var hurtbox: Area2D = $HurtBox
 @onready var timer: Timer = $Timer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _ready():
-	# Player collision layers
-	if attack_area:
-		attack_area.collision_layer = 1  # Player attack on layer 1
-		attack_area.collision_mask = 4   # Detect enemy hurtboxes on layer 4
-		attack_area.monitoring = true
-		attack_area.monitorable = true
-		print("Player Attack area collision_layer: ", attack_area.collision_layer, " collision_mask: ", attack_area.collision_mask)
+	spawn_position = global_position
+	health = max_health
+	change_state(State.IDLE)
 
-	if hurtbox:
-		hurtbox.collision_layer = 2      # Player hurtbox on layer 2
-		hurtbox.collision_mask = 3       # Detect enemy attacks on layer 3
-		hurtbox.monitoring = true
-		hurtbox.monitorable = true
-		print("Player Hurtbox collision_layer: ", hurtbox.collision_layer, " collision_mask: ", hurtbox.collision_mask)
-	
-	add_to_group("player")
-	
-	if attack_area:
-		attack_area.add_to_group("player_attack")
-		attack_area.monitoring = false
-		# Connect the area_entered signal for immediate detection
+	attack_area.collision_layer = 1
+	attack_area.collision_mask = 4
+	attack_area.monitoring = false
+	attack_area.add_to_group("player_attack")
+
+	hurtbox.collision_layer = 2
+	hurtbox.collision_mask = 3
+	hurtbox.monitoring = true
+	hurtbox.add_to_group("player_hurtbox")
+
+	if not attack_area.area_entered.is_connected(_on_attack_area_entered):
 		attack_area.area_entered.connect(_on_attack_area_entered)
-	
-	if hurtbox:
-		hurtbox.add_to_group("player_hurtbox")
+
+	if not hurtbox.area_entered.is_connected(_on_hurtbox_area_entered):
 		hurtbox.area_entered.connect(_on_hurtbox_area_entered)
-	
-	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+	if not animated_sprite.animation_finished.is_connected(_on_animation_finished):
+		animated_sprite.animation_finished.connect(_on_animation_finished)
+
+	if not timer.timeout.is_connected(_on_timer_timeout):
+		timer.timeout.connect(_on_timer_timeout)
+
+	add_to_group("player")
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	# Resets jumps when grounded
-	if is_on_floor():
+	else:
 		jump_count = 0
-	
-	# Allows for double jumping when items are collected
-	max_jumps = 2 if can_double_jump else 1
-	
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
-		velocity.y = jump_velocity
-		jump_count += 1
-	
-	if Input.is_action_just_pressed("attack") and can_attack and is_on_floor():
-		attack()
-		return
-	
-	var direction := Input.get_axis("move_left", "move_right")
-	
-	if is_attacking:
-		velocity.x = 0
-		move_and_slide()
-		return
-	
-	if direction:
-		velocity.x = direction * speed
-	else:
-		velocity.x = 0
-	
-	# Update facing direction and flip sprite + attack area
-	if direction == 1:
-		set_facing_direction(1)
-	elif direction == -1:
-		set_facing_direction(-1)
-	
-	if not is_on_floor():
-		if velocity.y < 0:
-			animated_sprite.play("jump")
-		else:
-			animated_sprite.play("fall")
-	elif direction:
-		animated_sprite.play("run")
-	else:
-		animated_sprite.play("idle")
-	
+
+	match current_state:
+		State.IDLE: _process_idle()
+		State.RUN: _process_run()
+		State.JUMP: _process_jump()
+		State.FALL: _process_fall()
+		State.ATTACK: _process_attack()
+		State.HURT: _process_hurt()
+		State.DEAD: _process_dead()
+
 	move_and_slide()
 
-func set_facing_direction(new_direction: int):
-	if facing_direction != new_direction:
-		facing_direction = new_direction
-		
-		# Flip sprite
-		animated_sprite.flip_h = (facing_direction == -1)
-		
-		# Flip attack area
-		if attack_area:
-			attack_area.scale.x = facing_direction
-
-func attack():
-	if not can_attack:
+func change_state(new_state: State):
+	if current_state == new_state:
 		return
-	
-	is_attacking = true
-	can_attack = false
-	animated_sprite.play("attack")
-	
-	if attack_area:
+
+	current_state = new_state
+
+	match new_state:
+		State.IDLE:
+			animated_sprite.play("idle")
+			velocity.x = 0
+		State.RUN:
+			animated_sprite.play("run")
+		State.JUMP:
+			animated_sprite.play("jump")
+		State.FALL:
+			animated_sprite.play("fall")
+		State.ATTACK:
+			pass
+		State.HURT:
+			animated_sprite.play("take_damage")
+			velocity.x = 0
+		State.DEAD:
+			animated_sprite.play("die")
+			velocity = Vector2.ZERO
+
+func _process_idle():
+	_handle_input()
+
+func _process_run():
+	var dir = Input.get_axis("move_left", "move_right")
+	if dir == 0:
+		change_state(State.IDLE)
+		return
+
+	velocity.x = dir * speed
+	set_facing_direction(dir)
+	_handle_input()
+
+func _process_jump():
+	if velocity.y >= 0:
+		change_state(State.FALL)
+
+func _process_fall():
+	if is_on_floor():
+		change_state(State.IDLE)
+
+func _process_attack():
+	velocity.x = 0
+	if animated_sprite.animation != "attack":
+		animated_sprite.play("attack")
 		attack_area.monitoring = true
-		# Wait one frame before checking overlaps
 		await get_tree().process_frame
 		_check_attack_overlaps()
 
-# Check for overlapping areas when attack starts
-func _check_attack_overlaps():
-	if not attack_area or not attack_area.monitoring:
-		return
-	
-	var overlapping_areas = attack_area.get_overlapping_areas()
-	
-	for area in overlapping_areas:
-		if area.is_in_group("enemy_hurtbox"):
-			var enemy_node = area.get_parent()
-			if enemy_node.has_method("take_damage"):
-				enemy_node.take_damage(damage)
+func _process_hurt():
+	pass
 
-# This will catch enemies that enter the attack area while it's active
-func _on_attack_area_entered(area):
-	if area.is_in_group("enemy_hurtbox") and attack_area.monitoring:
-		var enemy_node = area.get_parent()
-		if enemy_node.has_method("take_damage"):
-			enemy_node.take_damage(damage)
+func _process_dead():
+	pass
+
+func _handle_input():
+	if Input.is_action_just_pressed("jump"):
+		_do_jump()
+	elif Input.is_action_just_pressed("attack") and can_attack:
+		change_state(State.ATTACK)
+	else:
+		var dir = Input.get_axis("move_left", "move_right")
+		if dir != 0:
+			change_state(State.RUN)
+
+func _do_jump():
+	if can_double_jump:
+		max_jumps = 2
+	else:
+		max_jumps = 1
+	if jump_count < max_jumps:
+		velocity.y = jump_velocity
+		jump_count += 1
+		change_state(State.JUMP)
+
+func set_facing_direction(new_dir: int):
+	if facing_direction != new_dir:
+		facing_direction = new_dir
+		animated_sprite.flip_h = (facing_direction == -1)
+		attack_area.scale.x = facing_direction
 
 func take_damage(amount: int):
+	if current_state == State.DEAD:
+		return
+
 	health -= amount
-	print(health)
+	healthChange.emit()
 	if health <= 0:
-		die()
+		change_state(State.DEAD)
+	else:
+		change_state(State.HURT)
 
 func get_damage() -> int:
 	return damage
 
-func _on_animation_finished():
-	if animated_sprite.animation == "attack":
-		is_attacking = false
-		can_attack = true
-		if attack_area:
-			attack_area.monitoring = false
+func reset_player():
+	health = max_health
+	healthChange.emit()
+	can_attack = true
+	can_double_jump = false
+	jump_count = 0
+	max_jumps = 1
+	velocity = Vector2.ZERO
+	global_position = spawn_position
+	collision_shape.disabled = false
+	set_facing_direction(1)
+	change_state(State.IDLE)
+
+func _check_attack_overlaps():
+	var areas = attack_area.get_overlapping_areas()
+	for area in areas:
+		if area.is_in_group("enemy_hurtbox"):
+			var enemy = area.get_parent()
+			if enemy.has_method("take_damage"):
+				enemy.take_damage(damage)
+
+func _on_attack_area_entered(area):
+	if area.is_in_group("enemy_hurtbox") and attack_area.monitoring:
+		var enemy = area.get_parent()
+		if enemy.has_method("take_damage"):
+			enemy.take_damage(damage)
 
 func _on_hurtbox_area_entered(area):
-	# Don't detect our own attack area
 	if area == attack_area:
-		print("Player ignoring own attack area")
 		return
-		
 	if area.is_in_group("enemy_attack") and area.monitoring:
 		var enemy = area.get_parent()
 		if enemy.has_method("get_damage"):
 			take_damage(enemy.get_damage())
+
+
+func _on_animation_finished():
+	match current_state:
+		State.ATTACK:
+			attack_area.monitoring = false
+			can_attack = false
+			timer.start()
+			change_state(State.IDLE)
+		State.HURT:
+			change_state(State.IDLE)
+		State.DEAD:
+			reset_player()
 
 func die():
 	print("Player died!")
@@ -187,6 +236,7 @@ func die():
 	#timer.start()
 
 func _on_timer_timeout() -> void:
+  can_attack = true
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()
 
