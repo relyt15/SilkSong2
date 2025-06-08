@@ -14,14 +14,14 @@ enum State {
 @export var speed: float = 100.0
 @export var health: int = 100
 @export var damage: int = 25
-@export var attack_range: float = 35.0
+@export var attack_range: float = 75.0
 @export var attack_cooldown: float = 1.0
 
 # Initial state variables
 var current_state: State = State.IDLE
 var player = null
 var can_attack: bool = true
-var direction: int = 1
+var direction: int = -1
 var cooldown_timer: Timer
 
 # Keep on ground
@@ -41,7 +41,7 @@ func _ready():
 
 	if hurtbox:
 		hurtbox.monitoring = true
-		hurtbox.monitorable = true  
+		hurtbox.monitorable = true
 	
 	# Add groups
 	hurtbox.add_to_group("enemy_hurtbox")
@@ -83,7 +83,7 @@ func _physics_process(delta):
 		
 	if velocity.y < 0:
 		velocity.y = 0
-	
+		
 	move_and_slide()
 
 func process_idle_state(_delta):
@@ -147,7 +147,7 @@ func set_facing_direction(new_direction: int):
 		direction = new_direction
 		
 		# Flip sprite
-		animated_sprite.flip_h = (direction == -1)
+		animated_sprite.flip_h = (direction == 1)
 		
 		# Flip attack area
 		if attack_area:
