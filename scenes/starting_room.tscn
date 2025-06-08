@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=15 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="9_r8jva"]
 [ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="10_uldaa"]
-[ext_resource type="PackedScene" uid="uid://bqckh34uy7swg" path="res://scenes/boss.tscn" id="11_mma0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ambaj"]
 texture = ExtResource("2_68kfw")
@@ -5217,6 +5216,3 @@ offset_top = -736.0
 offset_right = 824.0
 offset_bottom = 157.0
 texture = ExtResource("5_jlxkg")
-
-[node name="boss" parent="." instance=ExtResource("11_mma0u")]
-position = Vector2(143, 32)
