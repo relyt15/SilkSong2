@@ -5,10 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity: int = -350
 @export var health: int = 100
 @export var max_health: int = 100
-
-#Player Damage Variables
 @export var damage: int = 25
-var damage_item_count: int = 0
 
 # Variables for double_jump
 var collected_double_jump_count: int = 0
@@ -110,13 +107,6 @@ func _physics_process(delta):
 		animated_sprite.play("idle")
 	
 	move_and_slide()
-
-func add_damage_item():
-	damage_item_count += 1
-	
-	if damage_item_count >= 3:
-		damage += 25
-		print("Damage Increased!")
 
 func set_facing_direction(new_direction: int):
 	if facing_direction != new_direction:
