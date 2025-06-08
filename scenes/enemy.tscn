@@ -1,7 +1,7 @@
 [gd_scene load_steps=58 format=3 uid="uid://byrhh5cx53ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/night_borne.png" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -415,17 +415,17 @@ position = Vector2(0, -42)
 shape = SubResource("RectangleShape2D_md0e3")
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 8
 visible = false
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0.5, -14.5)
 shape = SubResource("RectangleShape2D_4ra3w")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(27, -17.5)

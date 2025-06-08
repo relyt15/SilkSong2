@@ -474,24 +474,27 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3, -36)
 shape = SubResource("CapsuleShape2D_dlmty")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(0, -52.5)
 shape = SubResource("RectangleShape2D_neq0i")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(2.5, -35)
 shape = SubResource("RectangleShape2D_jncid")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 2
 
