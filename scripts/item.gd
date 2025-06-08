@@ -7,4 +7,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "player":
+		body.collected_item_count += 1
+		body.update_coin_label()
 		queue_free()

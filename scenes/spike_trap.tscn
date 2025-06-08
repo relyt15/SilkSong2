@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2ckt11qauj3"]
+
+[ext_resource type="Texture2D" uid="uid://runlf0ak821h" path="res://assets/environments/PixelPlatformerSet1v.1.1/other_and_decorative.png" id="1_euutn"]
+[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="2_u4nx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4nx7"]
+size = Vector2(16, 11)
+
+[node name="Spike Trap" type="Node2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_euutn")
+region_enabled = true
+region_rect = Rect2(208, 196, 15, 12)
+
+[node name="kill_zone" parent="." instance=ExtResource("2_u4nx7")]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="kill_zone"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u4nx7")
