@@ -21,6 +21,9 @@ signal healthChange
 var current_state: State = State.IDLE
 var facing_direction: int = 1
 var can_attack: bool = true
+# Variables for double_jump
+var collected_double_jump_count: int = 0
+var collected_item_count: int = 0
 var can_double_jump: bool = false
 var jump_count: int = 0
 var max_jumps: int = 1
@@ -213,6 +216,7 @@ func _on_hurtbox_area_entered(area):
 		if enemy.has_method("get_damage"):
 			take_damage(enemy.get_damage())
 
+
 func _on_animation_finished():
 	match current_state:
 		State.ATTACK:
@@ -225,5 +229,19 @@ func _on_animation_finished():
 		State.DEAD:
 			reset_player()
 
-func _on_timer_timeout():
-	can_attack = true
+func die():
+	print("Player died!")
+	#Engine.time_scale = 0.5
+	#collision_shape.queue_free()
+	#timer.start()
+
+func _on_timer_timeout() -> void:
+  can_attack = true
+	Engine.time_scale = 1.0
+	get_tree().reload_current_scene()
+
+#Function for collecting and updating coin count
+func update_coin_label():
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_coin_count(collected_item_count)

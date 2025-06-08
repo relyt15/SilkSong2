@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfitglrgbwncr"]
 
-[ext_resource type="Texture2D" uid="uid://crswl72elyb1c" path="res://assets/sprites/temp_item.png" id="1_bp1wp"]
-[ext_resource type="Script" uid="uid://utpx45kbr50d" path="res://scripts/item.gd" id="1_ph0dh"]
+[ext_resource type="Script" uid="uid://utpx45kbr50d" path="res://Scripts/item.gd" id="1_ph0dh"]
+[ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="2_i64fm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0dh"]
 
@@ -12,4 +12,4 @@ script = ExtResource("1_ph0dh")
 shape = SubResource("RectangleShape2D_ph0dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bp1wp")
+texture = ExtResource("2_i64fm")
