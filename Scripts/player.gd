@@ -30,18 +30,12 @@ var facing_direction: int = 1  # 1 for right, -1 for left
 func _ready():
 	# Player collision layers
 	if attack_area:
-		attack_area.collision_layer = 1  # Player attack on layer 1
-		attack_area.collision_mask = 4   # Detect enemy hurtboxes on layer 4
 		attack_area.monitoring = true
 		attack_area.monitorable = true
-		print("Player Attack area collision_layer: ", attack_area.collision_layer, " collision_mask: ", attack_area.collision_mask)
 
 	if hurtbox:
-		hurtbox.collision_layer = 2      # Player hurtbox on layer 2
-		hurtbox.collision_mask = 3       # Detect enemy attacks on layer 3
 		hurtbox.monitoring = true
 		hurtbox.monitorable = true
-		print("Player Hurtbox collision_layer: ", hurtbox.collision_layer, " collision_mask: ", hurtbox.collision_mask)
 	
 	add_to_group("player")
 	

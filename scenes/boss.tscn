@@ -1,6 +1,7 @@
-[gd_scene load_steps=67 format=3 uid="uid://bqckh34uy7swg"]
+[gd_scene load_steps=68 format=3 uid="uid://bqckh34uy7swg"]
 
 [ext_resource type="Texture2D" uid="uid://dwgq6yvjsrvr7" path="res://assets/sprites/boss.png" id="1_dlmty"]
+[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://scripts/boss.gd" id="1_neq0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neq0i"]
 atlas = ExtResource("1_dlmty")
@@ -451,11 +452,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlmty"]
-radius = 31.0
-height = 70.0
+radius = 36.0
+height = 72.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neq0i"]
-size = Vector2(400, 70)
+size = Vector2(400, 105)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jncid"]
 size = Vector2(71, 70)
@@ -464,36 +465,36 @@ size = Vector2(71, 70)
 size = Vector2(90, 76)
 
 [node name="boss" type="CharacterBody2D"]
+script = ExtResource("1_neq0i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -79)
 sprite_frames = SubResource("SpriteFrames_1wya7")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 14
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, -35)
+position = Vector2(3, -36)
 shape = SubResource("CapsuleShape2D_dlmty")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, -35)
+position = Vector2(0, -52.5)
 shape = SubResource("RectangleShape2D_neq0i")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(2.5, -35)
 shape = SubResource("RectangleShape2D_jncid")
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-69, -38)
+position = Vector2(-79, -38)
 shape = SubResource("RectangleShape2D_qnbj4")
