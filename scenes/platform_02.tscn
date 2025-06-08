@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmnkyxah8d4lm"]
+
+[ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="1_3b6xu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b6xu"]
+size = Vector2(43, 14)
+
+[node name="Platform02" type="AnimatableBody2D"]
+position = Vector2(5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3b6xu")
+region_enabled = true
+region_rect = Rect2(128, 241, 32, 15)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-19, 0)
+texture = ExtResource("1_3b6xu")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(96, 240, 17, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_3b6xu")
+one_way_collision = true

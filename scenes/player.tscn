@@ -202,14 +202,8 @@ size = Vector2(16, 37.75)
 size = Vector2(19, 30)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_g2els")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -27)
-zoom = Vector2(4, 4)
-limit_left = -688
-limit_right = 816
-limit_bottom = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17.9375)
@@ -219,16 +213,19 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_fjrip")
 
 [node name="AttackArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(17, -18.875)
 shape = SubResource("RectangleShape2D_dt7fs")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-1.5, -15)
