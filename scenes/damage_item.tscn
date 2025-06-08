@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch1n5hax0so0r"]
+
+[ext_resource type="Script" uid="uid://biu4u5n2vmyyn" path="res://scenes/damage_item.gd" id="1_1nafy"]
+[ext_resource type="Texture2D" uid="uid://ljkreloueibo" path="res://assets/sprites/damage_item.png" id="2_5tj5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0dh"]
+
+[node name="damage_item" type="Area2D"]
+script = ExtResource("1_1nafy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ph0dh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5tj5n")
