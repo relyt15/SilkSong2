@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c6fgunciudr6r"]
+[gd_scene load_steps=39 format=3 uid="uid://c6fgunciudr6r"]
 
 [ext_resource type="Texture2D" uid="uid://p3oy77nald8p" path="res://assets/sprites/adventurer_sheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://Scripts/player.gd" id="1_g2els"]
@@ -25,34 +25,18 @@ atlas = ExtResource("1_3vyb7")
 region = Rect2(200, 222, 50, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("3_qhqgy")
-region = Rect2(0, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("3_qhqgy")
-region = Rect2(50, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("3_qhqgy")
-region = Rect2(100, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
-atlas = ExtResource("3_qhqgy")
-region = Rect2(150, 0, 50, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(100, 333, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(150, 333, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bj30b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(200, 333, 50, 37)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jc3p3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(250, 333, 50, 37)
 
@@ -178,18 +162,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_487ah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_md1ol")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bj30b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jc3p3")
 }],
 "loop": false,
 "name": &"die",
@@ -304,7 +276,7 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -17.9375)
 scale = Vector2(1, 1.02365)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"die"
+animation = &"take_damage"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
