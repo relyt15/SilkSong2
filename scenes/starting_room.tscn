@@ -1,21 +1,22 @@
-[gd_scene load_steps=18 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=23 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
+[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://Scripts/texture_progress_bar.gd" id="2_ldog0"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_jlxkg"]
 [ext_resource type="Texture2D" uid="uid://b73okndns7vc7" path="res://assets/environments/fantasy_caves/background4b.png" id="5_jlxkg"]
-
+[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="6_aao8k"]
 [ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/coin.tscn" id="6_mf65l"]
-[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://scenes/ui_controller.gd" id="11_mma0u"]
-[ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="12_qrw5a"]
-[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="6_aao8k"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://Scenes/Item.tscn" id="6_mf65l"]
-[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://Scenes/platform.tscn" id="7_5ijor"]
-[ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://Scenes/double_jump.tscn" id="8_1v1w4"]
-[ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://Scenes/enemy.tscn" id="9_r8jva"]
-[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="10_uldaa"]
+[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="7_5ijor"]
+[ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
+[ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="9_r8jva"]
+[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="10_uldaa"]
+[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="11_mma0u"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="11_wepbf"]
+[ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="12_qrw5a"]
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="12_ss075"]
+[ext_resource type="Texture2D" uid="uid://k7q22u4tdn51" path="res://assets/sprites/healthbarUnder.png" id="15_btsr7"]
+[ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="16_iy6d0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uldaa"]
 
@@ -5290,3 +5291,20 @@ position = Vector2(-1, -186)
 scale = Vector2(2.47734, 2.03874)
 texture = ExtResource("12_ss075")
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -228.0
+offset_top = 38.0
+offset_right = -164.0
+offset_bottom = 78.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+texture_under = ExtResource("15_btsr7")
+texture_progress = ExtResource("16_iy6d0")
+script = ExtResource("2_ldog0")
+player_path = NodePath("../../player")
