@@ -27,8 +27,11 @@ var hit_registered_this_attack: bool = false
 @onready var detection_area = $DetectionArea
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
+@onready var healthbar = $health_bar
 
 func _ready():
+	healthbar.init_health(health)
+
 	if attack_area:
 		attack_area.monitoring = true
 		attack_area.monitorable = true
@@ -145,7 +148,9 @@ func take_damage(amount: int):
 		return
 
 	health -= amount
-
+	
+	healthbar.health = health
+	
 	if health <= 0:
 		change_state(State.DEAD)
 		animated_sprite.play("die")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://byrhh5cx53ekh"]
+[gd_scene load_steps=59 format=3 uid="uid://byrhh5cx53ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/night_borne.png" id="1_7p1mj"]
-[ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://scenes/health_bar.tscn" id="3_4ra3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -430,3 +431,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(27, -17.5)
 shape = SubResource("RectangleShape2D_5uy6h")
+
+[node name="health_bar" parent="." instance=ExtResource("3_4ra3w")]
+offset_left = -12.0
+offset_top = -44.0
+offset_right = 13.0
+offset_bottom = -42.0
