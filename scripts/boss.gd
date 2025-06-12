@@ -12,7 +12,7 @@ enum State {
 
 # Enemy stats
 @export var speed: float = 100.0
-@export var health: int = 100
+@export var health: int = 300
 @export var damage: int = 25
 @export var attack_range: float = 75.0
 @export var attack_cooldown: float = 1.0
@@ -33,7 +33,11 @@ var gravity = 980.0
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
 
+@onready var healthbar = $health_bar
+
 func _ready():
+	healthbar.init_health(health)
+	
 	# Enemy collision layers  
 	if attack_area:
 		attack_area.monitoring = true
@@ -164,7 +168,9 @@ func take_damage(amount: int):
 		return
 	
 	health -= amount
-		
+	
+	healthbar.health = health
+	
 	if health <= 0:
 		change_state(State.DEAD)
 		animated_sprite.play("die")
