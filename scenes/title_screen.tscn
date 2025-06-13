@@ -25,6 +25,18 @@ position = Vector2(1219.5, 556.75)
 scale = Vector2(2.59063, 2.50521)
 texture = ExtResource("2_mgrm8")
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(3677, 557)
+scale = Vector2(2.59063, 2.50521)
+texture = ExtResource("2_mgrm8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(6122, 557)
+scale = Vector2(2.59063, 2.50521)
+texture = ExtResource("2_mgrm8")
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -46,7 +58,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_s4lrb")
-stretch_mode = 3
 
 [node name="ButtonControlContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
 layout_direction = 1
