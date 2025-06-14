@@ -1,8 +1,8 @@
 [gd_scene load_steps=69 format=3 uid="uid://bqckh34uy7swg"]
 
 [ext_resource type="Texture2D" uid="uid://dwgq6yvjsrvr7" path="res://assets/sprites/boss.png" id="1_dlmty"]
-[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://scripts/boss.gd" id="1_neq0i"]
-[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://scenes/health_bar.tscn" id="3_jncid"]
+[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://Scripts/boss.gd" id="1_neq0i"]
+[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://Scenes/health_bar.tscn" id="3_jncid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neq0i"]
 atlas = ExtResource("1_dlmty")
@@ -453,7 +453,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlmty"]
-radius = 36.0
+radius = 21.0
 height = 72.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neq0i"]
@@ -476,7 +476,7 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(3, -36)
+position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_dlmty")
 
 [node name="DetectionArea" type="Area2D" parent="."]
