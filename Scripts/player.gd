@@ -5,8 +5,11 @@ extends CharacterBody2D
 @export var jump_velocity: int = -350
 @export var health: int = 100
 @export var max_health: int = 100
-@export var damage: int = 25
 var is_hurt: bool = false
+
+#Damage Variables
+@export var damage: int = 25
+var damage_item_count: int = 0
 
 signal HealthChanged
 
@@ -105,6 +108,12 @@ func set_facing_direction(new_direction: int):
 		animated_sprite.flip_h = (facing_direction == -1)
 		if attack_area:
 			attack_area.scale.x = facing_direction
+
+func add_damage_item():
+	damage_item_count += 1
+	if damage_item_count >= 3:
+		damage += 25
+		print("damage increased.")
 
 func attack():
 	if not can_attack:
