@@ -12,31 +12,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hdmo1")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1156.0
-offset_bottom = 647.0
-
-[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 1146.0
 offset_bottom = 644.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Resume"
 
-[node name="MenuButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Menu"
 
-[node name="QuitButton" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"

@@ -1,8 +1,8 @@
 extends Control
 
-@onready var resume_button = $Panel/CenterContainer/VBoxContainer/ResumeButton
-@onready var menu_button = $Panel/CenterContainer/VBoxContainer/MenuButton
-@onready var quit_button = $Panel/CenterContainer/VBoxContainer/QuitButton
+@onready var resume_button = $CenterContainer/VBoxContainer/ResumeButton
+@onready var menu_button = $CenterContainer/VBoxContainer/MenuButton
+@onready var quit_button = $CenterContainer/VBoxContainer/QuitButton
 
 func _ready():
 	resume_button.pressed.connect(_on_resume_pressed)
