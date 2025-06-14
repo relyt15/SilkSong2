@@ -1,8 +1,8 @@
 extends Control
 
 #Link containers with new variables
-@onready var play_button = $ButtonControlContainer/VBoxContainer/Play
-@onready var exit_button = $ButtonControlContainer/VBoxContainer/Quit
+@onready var play_button = $CenterContainer/VBoxContainer/ButtonControlContainer/VBoxContainer/Play
+@onready var exit_button = $CenterContainer/VBoxContainer/ButtonControlContainer/VBoxContainer/Quit
 
 func _ready():
 	#Connect variables with actions/functions

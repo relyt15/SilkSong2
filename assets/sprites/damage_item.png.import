@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp1otpu6v8fvy"
-path="res://.godot/imported/background3.png-6b9e50ae882ac51198abcb8327d06450.ctex"
+uid="uid://eptigr3tnqcw"
+path="res://.godot/imported/damage_item.png-b663c119cd4adc799dce5122b6a51757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environments/fantasy_caves/background3.png"
-dest_files=["res://.godot/imported/background3.png-6b9e50ae882ac51198abcb8327d06450.ctex"]
+source_file="res://assets/sprites/damage_item.png"
+dest_files=["res://.godot/imported/damage_item.png-b663c119cd4adc799dce5122b6a51757.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
