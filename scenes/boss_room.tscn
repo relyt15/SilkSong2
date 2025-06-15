@@ -1,17 +1,17 @@
 [gd_scene load_steps=18 format=4 uid="uid://cpeojihiy5vys"]
 
-[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="1_djbyv"]
-[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="2_dc5tq"]
-[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://Scenes/platform.tscn" id="2_ro8b5"]
+[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_djbyv"]
+[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="2_dc5tq"]
+[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="2_ro8b5"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="3_ro8b5"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="4_mx74l"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="5_kk2qi"]
 [ext_resource type="Texture2D" uid="uid://e2t6d7x1j6xd" path="res://assets/environments/fantasy_caves/background4a.png" id="6_w6sin"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="7_l76pc"]
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="8_wtlo8"]
-[ext_resource type="PackedScene" uid="uid://bqckh34uy7swg" path="res://Scenes/boss.tscn" id="10_ro8b5"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://Scenes/coin.tscn" id="12_kk2qi"]
-[ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://Scenes/NEW_DOOR.tscn" id="12_w6sin"]
+[ext_resource type="PackedScene" uid="uid://bqckh34uy7swg" path="res://scenes/boss.tscn" id="10_ro8b5"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/coin.tscn" id="12_kk2qi"]
+[ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://scenes/NEW_DOOR.tscn" id="12_w6sin"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uldaa"]
 

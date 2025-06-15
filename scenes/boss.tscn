@@ -1,8 +1,8 @@
 [gd_scene load_steps=69 format=3 uid="uid://bqckh34uy7swg"]
 
 [ext_resource type="Texture2D" uid="uid://dwgq6yvjsrvr7" path="res://assets/sprites/boss.png" id="1_dlmty"]
-[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://Scripts/boss.gd" id="1_neq0i"]
-[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://Scenes/health_bar.tscn" id="3_jncid"]
+[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://scripts/boss.gd" id="1_neq0i"]
+[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://scenes/health_bar.tscn" id="3_jncid"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neq0i"]
 atlas = ExtResource("1_dlmty")
@@ -471,7 +471,7 @@ script = ExtResource("1_neq0i")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -79)
 sprite_frames = SubResource("SpriteFrames_1wya7")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
