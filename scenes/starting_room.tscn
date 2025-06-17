@@ -1,8 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=27 format=4 uid="uid://rpc38v0txlb1"]
 
-[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://scripts/starting_room.gd" id="1_dhg7o"]
+[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://Scripts/starting_room.gd" id="1_dhg7o"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
-[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://scripts/texture_progress_bar.gd" id="2_ldog0"]
+[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://Scripts/texture_progress_bar.gd" id="2_ldog0"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_f46cw"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_jlxkg"]
 [ext_resource type="Texture2D" uid="uid://b73okndns7vc7" path="res://assets/environments/fantasy_caves/background4b.png" id="5_jlxkg"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="9_r8jva"]
 [ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="10_uldaa"]
-[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://scripts/ui_controller.gd" id="11_mma0u"]
+[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="11_mma0u"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="11_wepbf"]
 [ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="12_qrw5a"]
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="12_ss075"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="16_iy6d0"]
 [ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://scenes/pause_menu.tscn" id="18_803uf"]
 [ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://scenes/NEW_DOOR.tscn" id="18_dg3lp"]
+[ext_resource type="PackedScene" uid="uid://dchtg2lfo8vbv" path="res://scenes/damage_item.tscn" id="21_o1jv1"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uldaa"]
 
@@ -5252,7 +5253,6 @@ texture = ExtResource("5_jlxkg")
 script = ExtResource("11_mma0u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UIController"]
-visible = false
 
 [node name="CoinDisplay" type="HBoxContainer" parent="UIController/CanvasLayer"]
 offset_left = 94.0
@@ -5337,3 +5337,12 @@ player_path = NodePath("../../player")
 [node name="NEW_DOOR" parent="." instance=ExtResource("18_dg3lp")]
 position = Vector2(709, -160)
 target_scene = "res://Scenes/room_02.tscn"
+
+[node name="double_jump" parent="." instance=ExtResource("21_o1jv1")]
+position = Vector2(55, 7)
+
+[node name="double_jump2" parent="." instance=ExtResource("21_o1jv1")]
+position = Vector2(115, 13)
+
+[node name="double_jump3" parent="." instance=ExtResource("21_o1jv1")]
+position = Vector2(161, 6)

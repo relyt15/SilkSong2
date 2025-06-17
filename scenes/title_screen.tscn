@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf14g8u3cuj70"]
 
-[ext_resource type="Script" uid="uid://dcmgb517gppky" path="res://scripts/title_screen.gd" id="1_sa3yf"]
-[ext_resource type="Script" uid="uid://sxxma2iqb65d" path="res://scripts/parallax_background.gd" id="2_dc4i4"]
+[ext_resource type="Script" uid="uid://dcmgb517gppky" path="res://Scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="Script" uid="uid://sxxma2iqb65d" path="res://Scripts/parallax_background.gd" id="2_dc4i4"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="2_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://ycve7gfnerpn" path="res://assets/menu/title_screen.png" id="2_s4lrb"]
 
