@@ -41,6 +41,10 @@ var attack_cooldown_timer: Timer
 func _ready():
 	add_to_group("player")
 
+	#sync double jumping with game data
+	can_double_jump = GameData.can_double_jump
+	collected_double_jump_count = GameData.double_jump_items
+
 	#global damage variable so it's saved from room to room
 	damage = GameData.player_damage
 
@@ -213,6 +217,14 @@ func update_animation():
 func add_coin():
 	GameData.collected_coins += 1
 	update_coin_label()
+
+func add_jump_item():
+	collected_double_jump_count += 1
+	GameData.double_jump_items = collected_double_jump_count
+	if collected_double_jump_count >= 3:
+		can_double_jump = true
+		GameData.can_double_jump = true
+		print("can double jump.")
 
 # Optional: Coin update function
 func update_coin_label():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dchtg2lfo8vbv"]
 
-[ext_resource type="Script" uid="uid://dv4jwauwwxchj" path="res://Scripts/double_jump.gd" id="1_1nafy"]
+[ext_resource type="Script" uid="uid://drgtncoijh36b" path="res://Scripts/damage_item.gd" id="1_1nafy"]
 [ext_resource type="Texture2D" uid="uid://eptigr3tnqcw" path="res://assets/sprites/damage_item.png" id="2_1nafy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0dh"]
