@@ -15,7 +15,7 @@ signal HealthChanged
 
 # Double jump variables
 var collected_double_jump_count: int = 0
-var collected_item_count: int = 0
+var collected_coin_count: int = 0
 var can_double_jump: bool = false
 var jump_count: int = 0
 var max_jumps: int = 1
@@ -41,6 +41,13 @@ var attack_cooldown_timer: Timer
 func _ready():
 	add_to_group("player")
 
+	#sync double jumping with game data
+	can_double_jump = GameData.can_double_jump
+	collected_double_jump_count = GameData.double_jump_items
+
+	#global damage variable so it's saved from room to room
+	damage = GameData.player_damage
+
 	# Attack and hurtbox setup
 	if attack_area:
 		attack_area.monitoring = false
@@ -64,7 +71,7 @@ func _ready():
 
 	attack_cooldown_timer = Timer.new()
 	attack_cooldown_timer.one_shot = true
-	attack_cooldown_timer.wait_time = 0.4
+	attack_cooldown_timer.wait_time = 1.2
 	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
 	add_child(attack_cooldown_timer)
 
@@ -110,9 +117,10 @@ func set_facing_direction(new_direction: int):
 			attack_area.scale.x = facing_direction
 
 func add_damage_item():
-	damage_item_count += 1
-	if damage_item_count >= 3:
-		damage += 25
+	GameData.damage_items += 1
+	if GameData.damage_items >= 3:
+		damage = GameData.updated_player_damage
+		GameData.player_damage = damage
 		print("damage increased.")
 
 func attack():
@@ -206,11 +214,23 @@ func update_animation():
 	else:
 		animated_sprite.play("idle")
 
+func add_coin():
+	GameData.collected_coins += 1
+	update_coin_label()
+
+func add_jump_item():
+	collected_double_jump_count += 1
+	GameData.double_jump_items = collected_double_jump_count
+	if collected_double_jump_count >= 3:
+		can_double_jump = true
+		GameData.can_double_jump = true
+		print("can double jump.")
+
 # Optional: Coin update function
 func update_coin_label():
 	var ui = get_tree().get_first_node_in_group("UI")
 	if ui:
-		ui.update_coin_count(collected_item_count)
+		ui.update_coin_count(GameData.collected_coins)
 
 func _on_animation_finished():
 	if animated_sprite.animation == "take_damage" or animated_sprite.animation == "attack":
