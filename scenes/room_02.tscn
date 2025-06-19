@@ -1,9 +1,7 @@
-
-[gd_scene load_steps=28 format=4 uid="uid://byrx51klppmyi"]
+[gd_scene load_steps=30 format=4 uid="uid://byrx51klppmyi"]
 
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_7t4ba"]
 [ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://Scripts/starting_room.gd" id="1_8lkfq"]
-
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_mpqy7"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_bf4nw"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_mpe64"]
@@ -17,13 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="12_dgbqd"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="13_sl3ls"]
 [ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://scenes/NEW_DOOR.tscn" id="14_08fu0"]
-
-[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="15_8l68u"]
-[ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="16_8lkfq"]
-[ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://scenes/pause_menu.tscn" id="17_xcnw8"]
-
 [ext_resource type="Texture2D" uid="uid://k7q22u4tdn51" path="res://assets/sprites/healthbarUnder.png" id="15_8l68u"]
 [ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="16_8lkfq"]
+[ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="16_t215d"]
+[ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://scenes/pause_menu.tscn" id="17_t215d"]
 [ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://Scripts/texture_progress_bar.gd" id="17_xcnw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcpxx"]
@@ -6006,7 +6001,6 @@ position = Vector2(168, 592)
 target_scene = "res://Scenes/boss_room.tscn"
 
 [node name="UIController" type="Node" parent="."]
-script = ExtResource("15_8l68u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UIController"]
 
@@ -6018,7 +6012,7 @@ offset_bottom = 82.0
 
 [node name="TextureRect" type="TextureRect" parent="UIController/CanvasLayer/CoinDisplay"]
 layout_mode = 2
-texture = ExtResource("16_8lkfq")
+texture = ExtResource("16_t215d")
 
 [node name="CoinLabel" type="Label" parent="UIController/CanvasLayer/CoinDisplay"]
 layout_mode = 2
@@ -6032,7 +6026,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PauseMenu" parent="UIController/CanvasLayer/VBoxContainer" instance=ExtResource("17_xcnw8")]
+[node name="PauseMenu" parent="UIController/CanvasLayer/VBoxContainer" instance=ExtResource("17_t215d")]
 visible = false
 layout_mode = 2
 
