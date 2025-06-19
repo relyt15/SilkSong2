@@ -71,7 +71,7 @@ func _ready():
 
 	attack_cooldown_timer = Timer.new()
 	attack_cooldown_timer.one_shot = true
-	attack_cooldown_timer.wait_time = 0.4
+	attack_cooldown_timer.wait_time = 1.2
 	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
 	add_child(attack_cooldown_timer)
 
