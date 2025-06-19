@@ -8,7 +8,7 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "player":
 		# no implementation to this variable
-		body.collected_item_count += 1
+		body.collected_coin_count += 1
 		# this function does not exist in the player API
-		body.update_coin_label()
+		body.add_coin()
 		queue_free()
