@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ivlxeaucd1p5"
+path="res://.godot/imported/06192025_03pm_Main Theme_150bpm_DEMO.mp3-76665a705d193f503000773f9ecde951.mp3str"
+
+[deps]
+
+source_file="res://music/06192025_03pm_Main Theme_150bpm_DEMO.mp3"
+dest_files=["res://.godot/imported/06192025_03pm_Main Theme_150bpm_DEMO.mp3-76665a705d193f503000773f9ecde951.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

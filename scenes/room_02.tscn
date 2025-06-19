@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://byrx51klppmyi"]
+[gd_scene load_steps=25 format=4 uid="uid://byrx51klppmyi"]
 
 [ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="1_7t4ba"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_mpqy7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="12_dgbqd"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://Scenes/enemy.tscn" id="13_sl3ls"]
 [ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://Scenes/NEW_DOOR.tscn" id="14_08fu0"]
+[ext_resource type="PackedScene" uid="uid://dchtg2lfo8vbv" path="res://Scenes/damage_item.tscn" id="15_08fu0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcpxx"]
 texture = ExtResource("2_mpqy7")
@@ -5948,6 +5949,12 @@ position = Vector2(-624, 391)
 [node name="platform21" parent="Platforms" instance=ExtResource("9_5q3e1")]
 position = Vector2(-463, 329)
 
+[node name="platform22" parent="Platforms" instance=ExtResource("9_5q3e1")]
+position = Vector2(-184, 328)
+
+[node name="platform23" parent="Platforms" instance=ExtResource("9_5q3e1")]
+position = Vector2(-473, -347)
+
 [node name="Items" type="Node" parent="."]
 
 [node name="item" parent="Items" instance=ExtResource("10_mcpxx")]
@@ -5955,6 +5962,15 @@ position = Vector2(341, -410)
 
 [node name="item2" parent="Items" instance=ExtResource("10_mcpxx")]
 position = Vector2(-1046, 85)
+
+[node name="double_jump" parent="Items" instance=ExtResource("15_08fu0")]
+position = Vector2(319, -411)
+
+[node name="double_jump2" parent="Items" instance=ExtResource("15_08fu0")]
+position = Vector2(-841, 224)
+
+[node name="double_jump3" parent="Items" instance=ExtResource("15_08fu0")]
+position = Vector2(-95, 241)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -5992,6 +6008,3 @@ target_scene = "res://Scenes/starting_room.tscn"
 [node name="NEW_DOOR" parent="." instance=ExtResource("14_08fu0")]
 position = Vector2(168, 592)
 target_scene = "res://Scenes/boss_room.tscn"
-
-[node name="platform" parent="." instance=ExtResource("9_5q3e1")]
-position = Vector2(-473, -347)
