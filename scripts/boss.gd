@@ -23,6 +23,7 @@ var player = null
 var can_attack: bool = true
 var direction: int = -1
 var cooldown_timer: Timer
+var has_dealt_damage: bool = false  # NEW: Track if damage was dealt this attack
 
 # Keep on ground
 var gravity = 980.0
@@ -32,7 +33,6 @@ var gravity = 980.0
 @onready var detection_area = $DetectionArea
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
-
 @onready var healthbar = $health_bar
 
 func _ready():
@@ -57,6 +57,7 @@ func _ready():
 	detection_area.body_exited.connect(_on_detection_area_body_exited)
 	hurtbox.area_entered.connect(_on_hurtbox_area_entered)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	animated_sprite.frame_changed.connect(_on_frame_changed)  # NEW: Connect frame change signal
 	attack_area.area_entered.connect(_on_attack_area_entered)
 		
 	# Create cooldown timer
@@ -121,11 +122,8 @@ func process_attack_state(_delta):
 	
 	if animated_sprite.animation != "attack":
 		animated_sprite.play("attack")
-		attack_area.monitoring = true
-		
-		# Wait one frame before checking overlaps
-		await get_tree().process_frame
-		_check_attack_overlaps()
+		has_dealt_damage = false  # Reset damage flag for new attack
+		# Don't enable attack area monitoring here anymore
 
 func process_cooldown_state(_delta):
 	velocity = Vector2.ZERO
@@ -180,6 +178,23 @@ func take_damage(amount: int):
 func get_damage() -> int:
 	return damage
 
+func _on_frame_changed():
+	if current_state == State.ATTACK and animated_sprite.animation == "attack":
+		if animated_sprite.frame == 8 and not has_dealt_damage:
+			_perform_attack()
+
+func _perform_attack():
+	has_dealt_damage = true
+	attack_area.monitoring = true
+	
+	# Wait one frame for area detection to update
+	await get_tree().process_frame
+	_check_attack_overlaps()
+	
+	# Disable monitoring after a short duration
+	await get_tree().create_timer(0.1).timeout
+	attack_area.monitoring = false
+
 # Check for overlapping areas when attack starts
 func _check_attack_overlaps():
 	if not attack_area or not attack_area.monitoring:
@@ -216,7 +231,8 @@ func _on_hurtbox_area_entered(area):
 			take_damage(player_node.get_damage())
 
 func _on_attack_area_entered(area):
-	if area.is_in_group("player_hurtbox") and attack_area.monitoring:
+	# Only process if we're actively attacking and on the right frame
+	if area.is_in_group("player_hurtbox") and attack_area.monitoring and current_state == State.ATTACK:
 		var player_node = area.get_parent()
 		if player_node.has_method("take_damage"):
 			player_node.take_damage(damage)
