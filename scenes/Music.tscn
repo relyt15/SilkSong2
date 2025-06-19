@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6k45gkgdwfys"]
+
+[ext_resource type="AudioStream" uid="uid://ivlxeaucd1p5" path="res://music/06192025_03pm_Main Theme_150bpm_DEMO.mp3" id="1_fghhr"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_fghhr")
+autoplay = true
+bus = &"Music"
