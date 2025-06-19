@@ -5992,3 +5992,6 @@ target_scene = "res://Scenes/starting_room.tscn"
 [node name="NEW_DOOR" parent="." instance=ExtResource("14_08fu0")]
 position = Vector2(168, 592)
 target_scene = "res://Scenes/boss_room.tscn"
+
+[node name="platform" parent="." instance=ExtResource("9_5q3e1")]
+position = Vector2(-473, -347)
