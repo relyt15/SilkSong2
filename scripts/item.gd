@@ -15,4 +15,3 @@ func _on_body_entered(body):
 		animation_player.play("pickup")
 
 		body.add_coin()
-
