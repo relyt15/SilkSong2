@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://rpc38v0txlb1"]
+[gd_scene load_steps=28 format=4 uid="uid://rpc38v0txlb1"]
 
 [ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://Scripts/starting_room.gd" id="1_dhg7o"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_68kfw"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dqi11u8nmawqe" path="res://Scenes/double_jump.tscn" id="8_1v1w4"]
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://Scenes/enemy.tscn" id="9_r8jva"]
 [ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="10_uldaa"]
-
 [ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="11_mma0u"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="11_wepbf"]
 [ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="12_qrw5a"]
@@ -21,10 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="16_iy6d0"]
 [ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://Scenes/pause_menu.tscn" id="18_803uf"]
 [ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://Scenes/NEW_DOOR.tscn" id="18_dg3lp"]
+[ext_resource type="PackedScene" uid="uid://dchtg2lfo8vbv" path="res://Scenes/damage_item.tscn" id="21_o1jv1"]
 [ext_resource type="FontFile" uid="uid://d1kbr0i2ng0cy" path="res://fonts/PixelOperator8.ttf" id="22_ysiaq"]
-
-[ext_resource type="PackedScene" uid="uid://dchtg2lfo8vbv" path="res://scenes/damage_item.tscn" id="21_o1jv1"]
-
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uldaa"]
 
@@ -5351,11 +5348,9 @@ theme_override_colors/font_color = Color(0.52549, 0.568627, 0.635294, 0.368627)
 theme_override_fonts/font = ExtResource("22_ysiaq")
 theme_override_font_sizes/font_size = 8
 text = "Press Enter"
+
 [node name="double_jump" parent="." instance=ExtResource("21_o1jv1")]
 position = Vector2(55, 7)
 
-[node name="double_jump2" parent="." instance=ExtResource("21_o1jv1")]
-position = Vector2(115, 13)
-
-[node name="double_jump3" parent="." instance=ExtResource("21_o1jv1")]
-position = Vector2(161, 6)
+[node name="double_jump2" parent="." instance=ExtResource("8_1v1w4")]
+position = Vector2(130, 8)

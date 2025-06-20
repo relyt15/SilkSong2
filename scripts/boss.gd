@@ -35,6 +35,7 @@ var gravity = 980.0
 @onready var attack_area = $AttackArea
 @onready var healthbar = $health_bar
 
+
 func _ready():
 	healthbar.init_health(health)
 	
@@ -164,9 +165,7 @@ func change_state(new_state: State):
 func take_damage(amount: int):
 	if current_state == State.DEAD:
 		return
-	
 	health -= amount
-	
 	healthbar.health = health
 	
 	if health <= 0:

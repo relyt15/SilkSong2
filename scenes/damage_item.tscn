@@ -1,9 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://dchtg2lfo8vbv"]
+[gd_scene load_steps=8 format=3 uid="uid://dchtg2lfo8vbv"]
 
 [ext_resource type="Script" uid="uid://drgtncoijh36b" path="res://Scripts/damage_item.gd" id="1_1nafy"]
 [ext_resource type="Texture2D" uid="uid://eptigr3tnqcw" path="res://assets/sprites/damage_item.png" id="2_1nafy"]
+[ext_resource type="AudioStream" uid="uid://b22r1yqqrut5a" path="res://sounds/Minecraft - Item Pop (Sound Effect).mp3" id="3_ab1wl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph0dh"]
+
+[sub_resource type="Animation" id="Animation_wnjie"]
+resource_name = "pickupDamageItem"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickupDamageItem:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5f8er"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pickupDamageItem:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njmu4"]
+_data = {
+&"RESET": SubResource("Animation_5f8er"),
+&"pickupDamageItem": SubResource("Animation_wnjie")
+}
 
 [node name="double_jump" type="Area2D"]
 script = ExtResource("1_1nafy")
@@ -14,3 +113,12 @@ shape = SubResource("RectangleShape2D_ph0dh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1nafy")
+
+[node name="pickupDamageItem" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ab1wl")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_njmu4")
+}

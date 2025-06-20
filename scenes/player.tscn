@@ -1,8 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://c6fgunciudr6r"]
+[gd_scene load_steps=45 format=3 uid="uid://c6fgunciudr6r"]
 
 [ext_resource type="Texture2D" uid="uid://p3oy77nald8p" path="res://assets/sprites/adventurer_sheet.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://ct3mxr2qv873g" path="res://Scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://du1ig4o1p3k4k" path="res://assets/sprites/cropped.png" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://bmugm0lvlby4g" path="res://sounds/explosion.wav" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://cs4lfamnc167f" path="res://sounds/hurt.wav" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("1_3vyb7")
@@ -332,5 +334,13 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="Death SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vgqql")
+bus = &"SFX"
+
+[node name="Hurt SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fkybt")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

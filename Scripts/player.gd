@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var jump_velocity: int = -350
 @export var health: int = 100
 @export var max_health: int = 100
+@onready var death_sfx: AudioStreamPlayer2D = $"Death SFX"
+@onready var hurt_sfx: AudioStreamPlayer2D = $"Hurt SFX"
 var is_hurt: bool = false
 
 #Damage Variables
@@ -176,6 +178,7 @@ func take_damage(amount: int):
 	is_hurt = true
 	print("Playing animation take_damage")
 	animated_sprite.play("take_damage")
+	hurt_sfx.play()
 	print("Player took damage, health:", health)
 
 	if health <= 0:
@@ -185,6 +188,7 @@ func die():
 	print("Player died!")
 	animated_sprite.play("die")
 	velocity = Vector2.ZERO
+	death_sfx.play()
 	collision_shape.set_deferred("disabled", true)
 	timer.start()
 
