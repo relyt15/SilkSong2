@@ -1,8 +1,10 @@
-[gd_scene load_steps=59 format=3 uid="uid://byrhh5cx53ekh"]
+[gd_scene load_steps=61 format=3 uid="uid://byrhh5cx53ekh"]
 
 [ext_resource type="Texture2D" uid="uid://bupfqfpimtb1h" path="res://assets/sprites/night_borne.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cg33ogpeawoby" path="res://Scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://scenes/health_bar.tscn" id="3_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://Scenes/health_bar.tscn" id="3_4ra3w"]
+[ext_resource type="AudioStream" uid="uid://bmugm0lvlby4g" path="res://sounds/explosion.wav" id="4_0830c"]
+[ext_resource type="AudioStream" uid="uid://cs4lfamnc167f" path="res://sounds/hurt.wav" id="5_ghaa6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -400,7 +402,7 @@ script = ExtResource("1_md0e3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -24)
 sprite_frames = SubResource("SpriteFrames_7w3jn")
-animation = &"attack"
+animation = &"take_damage"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -437,3 +439,15 @@ offset_left = -12.0
 offset_top = -44.0
 offset_right = 13.0
 offset_bottom = -42.0
+
+[node name="Death SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0830c")
+volume_db = 3.0
+pitch_scale = 1.5
+bus = &"SFX"
+
+[node name="Hurt SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ghaa6")
+volume_db = 3.0
+pitch_scale = 1.5
+bus = &"SFX"

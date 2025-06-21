@@ -1,8 +1,10 @@
-[gd_scene load_steps=69 format=3 uid="uid://bqckh34uy7swg"]
+[gd_scene load_steps=71 format=3 uid="uid://bqckh34uy7swg"]
 
 [ext_resource type="Texture2D" uid="uid://dwgq6yvjsrvr7" path="res://assets/sprites/boss.png" id="1_dlmty"]
-[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://scripts/boss.gd" id="1_neq0i"]
-[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://scenes/health_bar.tscn" id="3_jncid"]
+[ext_resource type="Script" uid="uid://tkp8wfahb1r1" path="res://Scripts/boss.gd" id="1_neq0i"]
+[ext_resource type="PackedScene" uid="uid://cjnl6nh8dbmwv" path="res://Scenes/health_bar.tscn" id="3_jncid"]
+[ext_resource type="AudioStream" uid="uid://cs4lfamnc167f" path="res://sounds/hurt.wav" id="4_n725y"]
+[ext_resource type="AudioStream" uid="uid://bmugm0lvlby4g" path="res://sounds/explosion.wav" id="5_mh6p8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neq0i"]
 atlas = ExtResource("1_dlmty")
@@ -495,7 +497,6 @@ position = Vector2(2.5, -35)
 shape = SubResource("RectangleShape2D_jncid")
 
 [node name="AttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 16
 collision_mask = 2
 
@@ -508,3 +509,13 @@ offset_left = -81.0
 offset_top = -119.0
 offset_right = 78.0
 offset_bottom = -113.0
+
+[node name="Hurt SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_n725y")
+volume_db = 4.0
+pitch_scale = 1.5
+
+[node name="Death SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mh6p8")
+volume_db = 4.0
+pitch_scale = 1.5

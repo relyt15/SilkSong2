@@ -28,6 +28,8 @@ var hit_registered_this_attack: bool = false
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
 @onready var healthbar = $health_bar
+@onready var death_sfx: AudioStreamPlayer2D = $"Death SFX"
+@onready var hurt_sfx: AudioStreamPlayer2D = $"Hurt SFX"
 
 func _ready():
 	healthbar.init_health(health)
@@ -146,13 +148,14 @@ func change_state(new_state: State):
 func take_damage(amount: int):
 	if current_state == State.DEAD:
 		return
-
+	hurt_sfx.play()
 	health -= amount
 	
 	healthbar.health = health
 	
 	if health <= 0:
 		change_state(State.DEAD)
+		death_sfx.play()
 		animated_sprite.play("die")
 	else:
 		change_state(State.HURT)

@@ -34,6 +34,9 @@ var gravity = 980.0
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
 @onready var healthbar = $health_bar
+@onready var hurt_sfx: AudioStreamPlayer2D = $"Hurt SFX"
+@onready var death_sfx: AudioStreamPlayer2D = $"Death SFX"
+
 
 func _ready():
 	healthbar.init_health(health)
@@ -164,9 +167,7 @@ func change_state(new_state: State):
 func take_damage(amount: int):
 	if current_state == State.DEAD:
 		return
-	
 	health -= amount
-	
 	healthbar.health = health
 	
 	if health <= 0:
