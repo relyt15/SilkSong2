@@ -120,6 +120,9 @@ func set_facing_direction(new_direction: int):
 
 func add_damage_item():
 	GameData.damage_items += 1
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_damage_count(GameData.damage_items)
 	if GameData.damage_items >= 3:
 		damage = GameData.updated_player_damage
 		GameData.player_damage = damage
@@ -225,6 +228,9 @@ func add_coin():
 func add_jump_item():
 	collected_double_jump_count += 1
 	GameData.double_jump_items = collected_double_jump_count
+	var ui = get_tree().get_first_node_in_group("UI")
+	if ui:
+		ui.update_jump_count(GameData.double_jump_items)
 	if collected_double_jump_count >= 3:
 		can_double_jump = true
 		GameData.can_double_jump = true
