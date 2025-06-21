@@ -34,6 +34,8 @@ var gravity = 980.0
 @onready var hurtbox = $HurtBox
 @onready var attack_area = $AttackArea
 @onready var healthbar = $health_bar
+@onready var hurt_sfx: AudioStreamPlayer2D = $"Hurt SFX"
+@onready var death_sfx: AudioStreamPlayer2D = $"Death SFX"
 
 
 func _ready():

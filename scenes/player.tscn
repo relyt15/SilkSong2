@@ -337,10 +337,12 @@ one_shot = true
 
 [node name="Death SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vgqql")
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="Hurt SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_fkybt")
+volume_db = 3.0
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

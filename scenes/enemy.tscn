@@ -442,10 +442,12 @@ offset_bottom = -42.0
 
 [node name="Death SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0830c")
+volume_db = 3.0
 pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="Hurt SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_ghaa6")
+volume_db = 3.0
 pitch_scale = 1.5
 bus = &"SFX"
