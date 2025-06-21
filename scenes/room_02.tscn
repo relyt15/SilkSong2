@@ -1,19 +1,18 @@
 [gd_scene load_steps=34 format=4 uid="uid://byrx51klppmyi"]
 
-[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="1_7t4ba"]
-[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://Scripts/starting_room.gd" id="1_8lkfq"]
+[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_7t4ba"]
+[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://scripts/starting_room.gd" id="1_8lkfq"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="2_mpqy7"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="3_bf4nw"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="4_mpe64"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="5_5q3e1"]
 [ext_resource type="Texture2D" uid="uid://runlf0ak821h" path="res://assets/environments/PixelPlatformerSet1v.1.1/other_and_decorative.png" id="5_bf4nw"]
-[ext_resource type="PackedScene" uid="uid://bmnkyxah8d4lm" path="res://Scenes/platform_02.tscn" id="8_5q3e1"]
-[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="8_mpe64"]
-[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://Scenes/platform.tscn" id="9_5q3e1"]
-[ext_resource type="PackedScene" uid="uid://ce2ckt11qauj3" path="res://Scenes/spike_trap.tscn" id="9_mcpxx"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://Scenes/coin.tscn" id="10_mcpxx"]
+[ext_resource type="PackedScene" uid="uid://bmnkyxah8d4lm" path="res://scenes/platform_02.tscn" id="8_5q3e1"]
+[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="8_mpe64"]
+[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="9_5q3e1"]
+[ext_resource type="PackedScene" uid="uid://ce2ckt11qauj3" path="res://scenes/spike_trap.tscn" id="9_mcpxx"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/coin.tscn" id="10_mcpxx"]
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="12_dgbqd"]
-
 [ext_resource type="PackedScene" uid="uid://byrhh5cx53ekh" path="res://scenes/enemy.tscn" id="13_sl3ls"]
 [ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://scenes/NEW_DOOR.tscn" id="14_08fu0"]
 [ext_resource type="PackedScene" uid="uid://dchtg2lfo8vbv" path="res://scenes/damage_item.tscn" id="15_08fu0"]
@@ -21,9 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="16_8lkfq"]
 [ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="16_t215d"]
 [ext_resource type="Texture2D" uid="uid://so4b4jkievc4" path="res://assets/sprites/double_jump.png" id="17_8kes0"]
-[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="17_oqfxw"]
+[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://scripts/ui_controller.gd" id="17_oqfxw"]
 [ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://scenes/pause_menu.tscn" id="17_t215d"]
-[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://Scripts/texture_progress_bar.gd" id="17_xcnw8"]
+[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://scripts/texture_progress_bar.gd" id="17_xcnw8"]
 [ext_resource type="Texture2D" uid="uid://eptigr3tnqcw" path="res://assets/sprites/damage_item.png" id="18_oqfxw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcpxx"]
@@ -6014,11 +6013,11 @@ position = Vector2(0, 624)
 
 [node name="NEW_DOOR_to_startingroom" parent="." instance=ExtResource("14_08fu0")]
 position = Vector2(-712, -480)
-target_scene = "res://Scenes/starting_room.tscn"
+target_scene = "res://scenes/starting_room.tscn"
 
 [node name="NEW_DOOR" parent="." instance=ExtResource("14_08fu0")]
 position = Vector2(168, 592)
-target_scene = "res://Scenes/boss_room.tscn"
+target_scene = "res://scenes/boss_room.tscn"
 
 [node name="UIController" type="Node" parent="."]
 script = ExtResource("17_oqfxw")

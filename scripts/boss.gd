@@ -156,7 +156,7 @@ func set_facing_direction(new_direction: int):
 		
 		# Flip attack area
 		if attack_area:
-			attack_area.scale.x = direction
+			attack_area.scale.x = -1 * direction
 
 func change_state(new_state: State):
 	if current_state == new_state:
@@ -167,11 +167,14 @@ func change_state(new_state: State):
 func take_damage(amount: int):
 	if current_state == State.DEAD:
 		return
+	
+	hurt_sfx.play()
 	health -= amount
 	healthbar.health = health
 	
 	if health <= 0:
 		change_state(State.DEAD)
+		death_sfx.play()
 		animated_sprite.play("die")
 	else:
 		change_state(State.HURT)

@@ -1,25 +1,24 @@
 [gd_scene load_steps=27 format=4 uid="uid://cpeojihiy5vys"]
 
-[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://Scripts/starting_room.gd" id="1_4e86d"]
-[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://Scenes/player.tscn" id="1_djbyv"]
-[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://Scenes/kill_zone.tscn" id="2_dc5tq"]
-[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://Scenes/platform.tscn" id="2_ro8b5"]
+[ext_resource type="Script" uid="uid://urmsh6qq6575" path="res://scripts/starting_room.gd" id="1_4e86d"]
+[ext_resource type="PackedScene" uid="uid://c6fgunciudr6r" path="res://scenes/player.tscn" id="1_djbyv"]
+[ext_resource type="PackedScene" uid="uid://c5js1c6y7hy13" path="res://scenes/kill_zone.tscn" id="2_dc5tq"]
+[ext_resource type="PackedScene" uid="uid://cdnptw6wx5dm6" path="res://scenes/platform.tscn" id="2_ro8b5"]
 [ext_resource type="Texture2D" uid="uid://bhv82pekap71j" path="res://assets/environments/fantasy_caves/mainlev_build.png" id="3_ro8b5"]
 [ext_resource type="Texture2D" uid="uid://bdnprtnwhah8" path="res://assets/environments/fantasy_caves/props1.png" id="4_mx74l"]
 [ext_resource type="Texture2D" uid="uid://dxpyetbbpkc5g" path="res://assets/environments/fantasy_caves/props2.png" id="5_kk2qi"]
 [ext_resource type="Texture2D" uid="uid://e2t6d7x1j6xd" path="res://assets/environments/fantasy_caves/background4a.png" id="6_w6sin"]
 [ext_resource type="Texture2D" uid="uid://cp1otpu6v8fvy" path="res://assets/environments/fantasy_caves/background3.png" id="7_l76pc"]
 [ext_resource type="Texture2D" uid="uid://bvhcjsy2rrwu2" path="res://assets/environments/fantasy_caves/background1.png" id="8_wtlo8"]
-[ext_resource type="PackedScene" uid="uid://bqckh34uy7swg" path="res://Scenes/boss.tscn" id="10_ro8b5"]
-[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://Scenes/coin.tscn" id="12_kk2qi"]
-[ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://Scenes/NEW_DOOR.tscn" id="12_w6sin"]
+[ext_resource type="PackedScene" uid="uid://bqckh34uy7swg" path="res://scenes/boss.tscn" id="10_ro8b5"]
+[ext_resource type="PackedScene" uid="uid://cfitglrgbwncr" path="res://scenes/coin.tscn" id="12_kk2qi"]
+[ext_resource type="PackedScene" uid="uid://dhvxg1u3nnl3w" path="res://scenes/NEW_DOOR.tscn" id="12_w6sin"]
 [ext_resource type="Texture2D" uid="uid://k7q22u4tdn51" path="res://assets/sprites/healthbarUnder.png" id="13_c7j7s"]
 [ext_resource type="Texture2D" uid="uid://caxeiy38763hs" path="res://assets/sprites/healthbarProgress.png" id="14_4e86d"]
-[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://Scripts/ui_controller.gd" id="14_xmdvo"]
+[ext_resource type="Script" uid="uid://d37ayn2bduw86" path="res://scripts/ui_controller.gd" id="14_xmdvo"]
 [ext_resource type="Texture2D" uid="uid://so4b4jkievc4" path="res://assets/sprites/double_jump.png" id="15_d53cq"]
 [ext_resource type="Texture2D" uid="uid://bvib8evddn0wf" path="res://assets/sprites/coin.png" id="15_okx5s"]
-[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://Scripts/texture_progress_bar.gd" id="15_xmdvo"]
-
+[ext_resource type="Script" uid="uid://doxpeusaqd61" path="res://scripts/texture_progress_bar.gd" id="15_xmdvo"]
 [ext_resource type="Texture2D" uid="uid://eptigr3tnqcw" path="res://assets/sprites/damage_item.png" id="16_7l8xw"]
 [ext_resource type="PackedScene" uid="uid://dgvthism880tm" path="res://scenes/pause_menu.tscn" id="16_rrfgo"]
 
@@ -5109,7 +5108,7 @@ sources/2 = SubResource("TileSetAtlasSource_wepbf")
 script = ExtResource("1_4e86d")
 
 [node name="player" parent="." instance=ExtResource("1_djbyv")]
-position = Vector2(1601, 650)
+position = Vector2(194, 654)
 
 [node name="Camera2D2" type="Camera2D" parent="player"]
 position = Vector2(0, -15)
@@ -5215,7 +5214,7 @@ position = Vector2(1140, 370)
 
 [node name="NEW_DOOR" parent="." instance=ExtResource("12_w6sin")]
 position = Vector2(196, 622)
-target_scene = "res://Scenes/room_02.tscn"
+target_scene = "res://scenes/room_02.tscn"
 
 [node name="UIController" type="Node" parent="."]
 script = ExtResource("14_xmdvo")
