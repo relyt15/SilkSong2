@@ -2,6 +2,8 @@
 
 SilkSong2 is a short metroidvania style platformer created as a class project for Oakland University's CSI-2999 course as a collaboration with relyt15, TSN222, LucChapman, and Nick040404. This project takes its name and inspiration from Hollow Knight and other platformers of this style. This game has 3 levels, upgrade items, enemies, environmental hazards and a boss. 
 
+To play the game, go to the Releases section of the GitHub, download the .exe file, and boot up the application.
+
 ![image](https://github.com/user-attachments/assets/e3256ff0-ba85-45ab-b2d1-d48021b47dcb)
 
 ## How It's Made:
