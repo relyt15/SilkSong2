@@ -4,6 +4,7 @@ SilkSong2 is a short metroidvania style platformer created as a class project fo
 
 To play the game, go to the Releases section of the GitHub, download the .exe file, and boot up the application.
 
+
 ![image](https://github.com/user-attachments/assets/e3256ff0-ba85-45ab-b2d1-d48021b47dcb)
 
 ## How It's Made:
